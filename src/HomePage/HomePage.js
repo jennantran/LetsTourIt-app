@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'; 
 import './HomePage.css';
 
-export default class HomePage extends Component {
+ class HomePage extends Component {
+    handleClick(e) {
+        this.props.history.push('/register')
+    }
+     
     render(){
         return(
             <div className='homePage'>
@@ -13,11 +18,12 @@ export default class HomePage extends Component {
                         <h1>Let the Exploring Begin</h1>
                         <p><em>Don't know what to do? </em></p>
                         <p><em>Search for things to do and things to eat. </em></p>
-                        <button>Sign Up</button>
+                        <button onClick={e => this.handleClick(e)}>Sign Up</button>
                     </div>
                 </section>
             </div>
-        )
+        );
     }
 }
 
+export default withRouter(HomePage);
