@@ -1,0 +1,16 @@
+ img.compass{
+   margin: 50px;
+} 
+.header{
+    padding: 80px;
+    margin-top: 50px;
+}
+.homePageSect{
+    display:flex;
+    flex-direction: row;
+}
+
+button{
+    background-color: #ffb800;
+    width: 180px;
+}
