@@ -5,19 +5,14 @@ class FilterOptions extends Component {
     render(){
         return(
             <div className='filterOptions'>
-                <div className='option'>
-                    <label htmlFor='filterByRating'>
+                    <label class='filter'>
                         <input type='radio' value='rating' id='filterByRating' name='option'/>
                     Rating
                     </label>
-                </div>
-                <div className='option'>
-                    <label htmlFor='filterByProximity'>
+                    <label class='filter'>
                         <input type='radio' value='proximity' id='filterByProximity' name='option'/>
                     Proximity
                     </label>
-                </div>
-
             </div>
 
         );

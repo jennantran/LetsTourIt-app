@@ -43,8 +43,12 @@ class SearchBox extends Component {
         const resultList = this.state.results;
         console.log(resultList);
         const places = resultList.map(function(resultItem){
-          return <li>{resultItem.name}
-          {resultItem.rating}</li>
+          return <ul>
+                    <li> 
+                      {resultItem.name +' '}
+                      {resultItem.rating}
+                    </li>
+                  </ul>
         })
       return (
         <div>
@@ -55,18 +59,28 @@ class SearchBox extends Component {
                   type='text'
                   name='search'
                   id='search' 
-                  placeholder='Golden Gate Bridge'
+                  placeholder='Search for places...'
                   onChange={e => this.updateSearch(e.target.value)}/>
               <input type='submit'  
                     className='submit'
                     />
+                <div className='filterOptions'>
+                      <label class='filter'>
+                      <input type='radio' value='rating' id='filterByRating' name='option'/>
+                      Rating
+                      </label>
+                      <label class='filter'>
+                          <input type='radio' value='proximity' id='filterByProximity' name='option'/>
+                      Proximity
+                      </label>
+                 </div>
               </form>   
             <section id='results'>
                 <h2>Search results</h2>
                   <ul>
                     {places}
                   </ul>
-            </section>`
+            </section>
           </div>
       );
     }
