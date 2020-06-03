@@ -6,7 +6,7 @@ class Nav extends Component {
         return(
             <section className='nav'>
                 <h2>JustTourIt.</h2>
-                <ul>
+                <ul> 
                     <li><a href='/'>Home</a></li>
                     <li><a href='/login'>Log in </a></li>
                     <li><a href='/search'>Search </a></li>

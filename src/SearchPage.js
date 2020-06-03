@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar/SearchBar';
+import Maps from './Maps';
 
 
 class SearchPage extends Component {
@@ -7,6 +8,7 @@ class SearchPage extends Component {
         return(
             <div className='searchPage'>
               <SearchBar/>
+              <Maps/>
             </div>
         );
     }

@@ -2,42 +2,72 @@ import React, { Component } from 'react';
 import './SearchBox.css';
 
 class SearchBox extends Component {
-    state = {
-      query: '',
-      places:[]
-    }
+    constructor(props){
+      super(props);
+      this.state = {
+        search: '',
+        results: []
+      }
+  }
 
-  handleSearchChange = (e) => {
+  updateSearch(search){
     this.setState({
-      query: e.target.value
+      search: search
     })
   }
 
-  componentDidMount(){
-    const query = this.state;
+  handleSubmit(event){
+    console.log('handleSubmit');
+    console.log(event);
+    event.preventDefault();
+
+    const search = this.state.search;
+    const searchUrl=search.replace(/s/g,"%20");
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const baseUrl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${query}`;
+    const baseUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchUrl}`;
     const API = '&key=AIzaSyBHdqGP9ct6h2F5z6QaCdnp_4IQXSxxjxA';
+    console.log(search);
+    console.log(baseUrl);
+
     fetch(proxyUrl + baseUrl + API)
       .then(response => response.json())
-      .then(result => {
-        this.setState({
-          query: result.query
-        });
+      .then(json => {
+         console.log(json);
+         this.setState({
+           results: json.results
+         })
     });
   }
+
     render() {
+        const resultList = this.state.results;
+        console.log(resultList);
+        const places = resultList.map(function(resultItem){
+          return <li>{resultItem.name}
+          {resultItem.rating}</li>
+        })
       return (
-        <div className='SearchBox'>
-          <input placeholder='Golden Gate Bridge'/>
-          <input type='button'  
-                 value='search'
-                 onChange={this.handleSearchChange}
-                 />
-          <section id='results'>
-              <h2>Search results</h2>
-          </section>
-        </div>   
+        <div>
+           <form className='SearchBox'
+                onSubmit = {e => this.handleSubmit(e)}>
+              <input 
+                  required
+                  type='text'
+                  name='search'
+                  id='search' 
+                  placeholder='Golden Gate Bridge'
+                  onChange={e => this.updateSearch(e.target.value)}/>
+              <input type='submit'  
+                    className='submit'
+                    />
+              </form>   
+            <section id='results'>
+                <h2>Search results</h2>
+                  <ul>
+                    {places}
+                  </ul>
+            </section>`
+          </div>
       );
     }
   }

@@ -7,19 +7,13 @@ class FilterOptions extends Component {
             <div className='filterOptions'>
                 <div className='option'>
                     <label htmlFor='filterByRating'>
-                        <input type='radio' value='rating' id='filterByRating'/>
+                        <input type='radio' value='rating' id='filterByRating' name='option'/>
                     Rating
                     </label>
                 </div>
                 <div className='option'>
-                    <label htmlFor='filterByType'>
-                        <input type='radio' value='type' id='filterByType'/>
-                    Place Type
-                    </label>
-                </div>
-                <div className='option'>
                     <label htmlFor='filterByProximity'>
-                        <input type='radio' value='proximity' id='filterByProximity'/>
+                        <input type='radio' value='proximity' id='filterByProximity' name='option'/>
                     Proximity
                     </label>
                 </div>

@@ -10,18 +10,6 @@ import './App.css';
 import FavoritedList from './FavoritedList';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  componentDidMount(){
-     navigator.geolocation.getCurrentPosition(function(position) {
-      console.log("Latitude is :", position.coords.latitude);
-      console.log("Longitude is :", position.coords.longitude);
-    });
-  }
   
   render(){
     return (
@@ -33,8 +21,8 @@ class App extends Component {
           <Route exact path='/' component={HomePage} />
           <Route path='/search' component={SearchPage} />
           <Route path='/login' component={Login} />
-          <Route path='/register' component={Register} />
-          <Route path='/favoritedList' component={FavoritedList} />
+          {/* <Route path='/register' component={Register} /> */}
+          {/* <Route path='/favoritedList' component={FavoritedList} /> */}
           
         </main>
         <footer>
