@@ -6,7 +6,8 @@ class SearchBox extends Component {
       super(props);
       this.state = {
         search: '',
-        results: []
+        results: [],
+        selectedValue: '5'
       }
   }
 
@@ -16,20 +17,29 @@ class SearchBox extends Component {
     })
   }
 
+  updateRadius(selectedValue){
+    this.setState({
+      selectedValue: selectedValue
+    })
+  }
+
   handleSubmit(event){
     console.log('handleSubmit');
     console.log(event);
     event.preventDefault();
 
     const search = this.state.search;
-    const searchUrl=search.replace(/s/g,"%20");
+    const selectedValue = this.state.selectedValue;
+    const searchUrl= search.replace(/s/g,"%20");
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const baseUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchUrl}`;
+    const radius = `&radius=${selectedValue}`
     const API = '&key=AIzaSyBHdqGP9ct6h2F5z6QaCdnp_4IQXSxxjxA';
-    console.log(search);
-    console.log(baseUrl);
+    const url = proxyUrl + baseUrl + radius + API;
+    console.log(url);
+    
 
-    fetch(proxyUrl + baseUrl + API)
+    fetch(url)
       .then(response => response.json())
       .then(json => {
          console.log(json);
@@ -47,6 +57,7 @@ class SearchBox extends Component {
                     <li> 
                       {resultItem.name +' '}
                       {resultItem.rating}
+                      {resultItem.formatted_address}
                     </li>
                   </ul>
         })
@@ -66,13 +77,19 @@ class SearchBox extends Component {
                     />
                 <div className='filterOptions'>
                       <label class='filter'>
-                      <input type='radio' value='rating' id='filterByRating' name='option'/>
-                      Rating
+                      <input type='radio' value='openNow' id='filterByHours' name='filterByHours'/>
+                        Open Now
                       </label>
-                      <label class='filter'>
-                          <input type='radio' value='proximity' id='filterByProximity' name='option'/>
-                      Proximity
-                      </label>
+                      <label for='radius'>Search by Radius:</label>
+                      <select 
+                          value = {this.state.selectedValue}
+                          onChange={e=> this.updateRadius(e.target.value)}
+                          name='radius' id='radius'>
+                        <option value='1'>1 miles</option>
+                        <option value='5'>5 miles</option>
+                        <option value='10'>10 miles</option>
+                        <option value='20'>20 miles</option>
+                    </select>
                  </div>
               </form>   
             <section id='results'>
