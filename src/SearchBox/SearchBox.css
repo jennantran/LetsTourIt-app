@@ -2,3 +2,12 @@
 	display: inline;
 	margin-left: 0.5em;
 }
+
+i{
+    cursor: pointer;
+
+}
+
+i:hover{
+    transform: scale(1.6);
+}

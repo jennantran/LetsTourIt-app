@@ -13,13 +13,10 @@ class SearchBox extends Component {
           lat: '',
           lng: ''
         },
-        // latitude: coords.latitude,
-        // longitude: coords.longitude,
       }
   }
 
-  updateLocation() {
-    console.log(navigator);
+  updateLocation = () => {
     if (navigator && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(pos => {
           const coords = pos.coords;
@@ -29,53 +26,76 @@ class SearchBox extends Component {
                 lng: coords.longitude
             }
           });
-          console.log(coords);
-          console.log(this.state);
-
       });
       }
   }
 
-  updateSearch(search){
+  updateSearch = (search) => {
     this.setState({
       search: search
     })
   }
 
-  updateRadius(selectedValue){
+  updateRadius = (selectedValue) => {
     this.setState({
       selectedValue: selectedValue
     })
   }
 
-  checkboxToggle() {
-    console.log(this.state.openNowCheck)
+  checkboxToggle = () =>  {
       this.setState({
         openNowCheck: !this.state.openNowCheck
       })
-      console.log(this.state.openNowCheck)
   }
 
-  
+  favoriteToggle = (e) => {
+    console.log('favorite');
+    console.log(e.currentTarget.parentNode);
+    return e;
+    //the passed in event targets the <li> get the value of the heart toggle
+    //then based off that value 
+    //1. Call function to Add favorite to favorites -> requires API
+          // to write this function you need to get the values from 'e' and 
+          // pass them to your API call fetch 
+    // or 
+    //2. Call function to delete favorite from favorites -> requires API
+          // to write this function you need to make an API to get the
+          // value of the placeID from 'e' pass it to the API
+          // API will run the query to delete it from the user's database table
 
-  handleSubmit(event){
+
+    //After this create the favoriteslist.js 
+    //that file will call fetch for the user's favorites and you need
+    //to fetch it at app start and save it to your ('this.state.favorites') 
+    // state (maybe need context) also add the favoriteToggle to that file as well
+  }
+  
+  handleSubmit = (event) => {
     event.preventDefault();
-    this.updateLocation();
     const search = this.state.search;
+    const openNowCheck = this.state.openNowCheck;
     const selectedValue = this.state.selectedValue;
+    const lat = this.state.currentLocation.lat;
+    const lng = this.state.currentLocation.lng;
     const searchUrl= search.replace(/s/g,"%20");
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const baseUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchUrl}`;
     const radius = `&radius=${selectedValue}`;
+    const location =`&location=${lat},${lng}`;
     const open = `&opennow`;
     const API = '&key=AIzaSyBHdqGP9ct6h2F5z6QaCdnp_4IQXSxxjxA';
-
-    const url = proxyUrl + baseUrl + radius + open + API;
+    
+    let url = proxyUrl + baseUrl + radius + location + open + API;
+    
+    if(!openNowCheck){
+       url =proxyUrl + baseUrl + radius + location +  API;
+    }else{
+        console.log('looks good');
+    }
 
     fetch(url)
       .then(response => response.json())
       .then(json => {
-         console.log(json);
          this.setState({
            results: json.results
          })
@@ -86,17 +106,21 @@ class SearchBox extends Component {
     }
 
     render() {
-        const resultList = this.state.results;
-        console.log(resultList);
-        const places = resultList.map(function(resultItem){
-          return <ul>
-                    <li> 
-                      {resultItem.name +' '}
-                      {resultItem.rating}
-                      {resultItem.formatted_address}
-                    </li>
-                  </ul>
-        })
+      this.updateLocation();
+      const resultList = this.state.results;
+      //Separate into seperate component ResultList/resultItem
+      const places = resultList.map((resultItem, i) => {
+        return <ul>
+                  <li key={i}> 
+                    {resultItem.name +' '}
+                    {resultItem.rating}
+                    {resultItem.formatted_address + ''}
+                    <i class="fas fa-heart"
+                        onClick={ e => this.favoriteToggle(e)}
+                        ></i>
+                  </li>
+                </ul>
+      })
       return (
         <div>
            <form className='SearchBox'
@@ -118,7 +142,7 @@ class SearchBox extends Component {
                           value='openNow' 
                           id='filterByHours' 
                           name='filterByHours'
-                          onClick={ () => this.checkboxToggle()} 
+                          onClick={ (e) => this.favoriteToggle(e.target.value)} 
                           />
                         Open Now
                       </label>
