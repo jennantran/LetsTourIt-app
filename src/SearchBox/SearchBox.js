@@ -7,7 +7,32 @@ class SearchBox extends Component {
       this.state = {
         search: '',
         results: [],
-        selectedValue: '5'
+        selectedValue: '5',
+        openNowCheck: false,
+        currentLocation: {
+          lat: '',
+          lng: ''
+        },
+        // latitude: coords.latitude,
+        // longitude: coords.longitude,
+      }
+  }
+
+  updateLocation() {
+    console.log(navigator);
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+          const coords = pos.coords;
+          this.setState({
+            currentLocation: {
+                lat: coords.latitude,
+                lng: coords.longitude
+            }
+          });
+          console.log(coords);
+          console.log(this.state);
+
+      });
       }
   }
 
@@ -23,21 +48,29 @@ class SearchBox extends Component {
     })
   }
 
-  handleSubmit(event){
-    console.log('handleSubmit');
-    console.log(event);
-    event.preventDefault();
+  checkboxToggle() {
+    console.log(this.state.openNowCheck)
+      this.setState({
+        openNowCheck: !this.state.openNowCheck
+      })
+      console.log(this.state.openNowCheck)
+  }
 
+  
+
+  handleSubmit(event){
+    event.preventDefault();
+    this.updateLocation();
     const search = this.state.search;
     const selectedValue = this.state.selectedValue;
     const searchUrl= search.replace(/s/g,"%20");
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const baseUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchUrl}`;
-    const radius = `&radius=${selectedValue}`
+    const radius = `&radius=${selectedValue}`;
+    const open = `&opennow`;
     const API = '&key=AIzaSyBHdqGP9ct6h2F5z6QaCdnp_4IQXSxxjxA';
-    const url = proxyUrl + baseUrl + radius + API;
-    console.log(url);
-    
+
+    const url = proxyUrl + baseUrl + radius + open + API;
 
     fetch(url)
       .then(response => response.json())
@@ -46,8 +79,11 @@ class SearchBox extends Component {
          this.setState({
            results: json.results
          })
-    });
-  }
+      })
+      .catch(function(err){
+        console.log('There was an error');
+      })
+    }
 
     render() {
         const resultList = this.state.results;
@@ -77,7 +113,13 @@ class SearchBox extends Component {
                     />
                 <div className='filterOptions'>
                       <label class='filter'>
-                      <input type='radio' value='openNow' id='filterByHours' name='filterByHours'/>
+                      <input 
+                          type='checkbox' 
+                          value='openNow' 
+                          id='filterByHours' 
+                          name='filterByHours'
+                          onClick={ () => this.checkboxToggle()} 
+                          />
                         Open Now
                       </label>
                       <label for='radius'>Search by Radius:</label>
