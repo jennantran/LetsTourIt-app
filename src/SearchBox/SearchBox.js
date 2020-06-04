@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './SearchBox.css';
+import Place from '../Place';
 
 class SearchBox extends Component {
     constructor(props){
@@ -83,7 +84,7 @@ class SearchBox extends Component {
     const radius = `&radius=${selectedValue}`;
     const location =`&location=${lat},${lng}`;
     const open = `&opennow`;
-    const API = '&key=AIzaSyBHdqGP9ct6h2F5z6QaCdnp_4IQXSxxjxA';
+    const API = '&key=AIzaSyBoLFRF2RY7_h5pL0k4Yo96Q5XI9ivlAAw';
     
     let url = proxyUrl + baseUrl + radius + location + open + API;
     
@@ -108,16 +109,18 @@ class SearchBox extends Component {
     render() {
       this.updateLocation();
       const resultList = this.state.results;
+      console.log(resultList);
       //Separate into seperate component ResultList/resultItem
-      const places = resultList.map((resultItem, i) => {
+      const places = resultList.map((resultItem, place_id) => {
         return <ul>
-                  <li key={i}> 
-                    {resultItem.name +' '}
-                    {resultItem.rating}
-                    {resultItem.formatted_address + ''}
-                    <i class="fas fa-heart"
+                  <li key={resultItem.place_id}> 
+                      <Place
+                        id={resultItem.place_id}
+                        name={resultItem.name}
+                        address={resultItem.formatted_address}
+                        rating={resultItem.rating}
                         onClick={ e => this.favoriteToggle(e)}
-                        ></i>
+                      />
                   </li>
                 </ul>
       })
