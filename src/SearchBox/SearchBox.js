@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './SearchBox.css';
 import Place from '../Place';
 import FavoritesContext from '../FavoritesContext';
-import dummyStore from '../dummyStore';
+// import dummyStore from '../dummyStore';
 
 
 class SearchBox extends Component {
@@ -75,44 +75,44 @@ class SearchBox extends Component {
     
  
   }
-  handleSubmit = (event) => {
-    event.preventDefault();
-    setTimeout(() => this.setState(dummyStore), 600);
-  }
   // handleSubmit = (event) => {
   //   event.preventDefault();
-  //   const search = this.state.search;
-  //   const openNowCheck = this.state.openNowCheck;
-  //   const selectedValue = this.state.selectedValue;
-  //   const lat = this.state.currentLocation.lat;
-  //   const lng = this.state.currentLocation.lng;
-  //   const searchUrl= search.replace(/s/g,"%20");
-  //   const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-  //   const baseUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchUrl}`;
-  //   const radius = `&radius=${selectedValue}`;
-  //   const location =`&location=${lat},${lng}`;
-  //   const open = `&opennow`;
-  //   const API = '&key=AIzaSyBoLFRF2RY7_h5pL0k4Yo96Q5XI9ivlAAw';
+  //   setTimeout(() => this.setState(dummyStore), 600);
+  // }
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const search = this.state.search;
+    const openNowCheck = this.state.openNowCheck;
+    const selectedValue = this.state.selectedValue;
+    const lat = this.state.currentLocation.lat;
+    const lng = this.state.currentLocation.lng;
+    const searchUrl= search.replace(/s/g,"%20");
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const baseUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchUrl}`;
+    const radius = `&radius=${selectedValue}`;
+    const location =`&location=${lat},${lng}`;
+    const open = `&opennow`;
+    const API = '&key=AIzaSyBoLFRF2RY7_h5pL0k4Yo96Q5XI9ivlAAw';
     
-  //   let url = proxyUrl + baseUrl + radius + location + open + API;
+    let url = proxyUrl + baseUrl + radius + location + open + API;
     
-  //   if(!openNowCheck){
-  //      url =proxyUrl + baseUrl + radius + location +  API;
-  //   }else{
-  //       console.log('looks good');
-  //   }
+    if(!openNowCheck){
+       url =proxyUrl + baseUrl + radius + location +  API;
+    }else{
+        console.log('looks good');
+    }
 
-  //   fetch(url)
-  //     .then(response => response.json())
-  //     .then(json => {
-  //        this.setState({
-  //          results: json.results
-  //        })
-  //     })
-  //     .catch(function(err){
-  //       console.log('There was an error');
-  //     })
-  //   }
+    fetch(url)
+      .then(response => response.json())
+      .then(json => {
+         this.setState({
+           results: json.results
+         })
+      })
+      .catch(function(err){
+        console.log('There was an error');
+      })
+    }
 
     render() {
       this.updateLocation();
@@ -146,7 +146,7 @@ class SearchBox extends Component {
                     className='submit'
                     />
                 <div className='filterOptions'>
-                      <label class='filter'>
+                      <label className='filter'>
                       <input 
                           type='checkbox' 
                           value='openNow' 
@@ -156,7 +156,7 @@ class SearchBox extends Component {
                           />
                         Open Now
                       </label>
-                      <label for='radius'>Search by Radius:</label>
+                      <label className='radius'>Search by Radius:</label>
                       <select 
                           value = {this.state.selectedValue}
                           onChange={e=> this.updateRadius(e.target.value)}

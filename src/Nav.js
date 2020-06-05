@@ -10,7 +10,7 @@ class Nav extends Component {
                     <li><a href='/'>Home</a></li>
                     <li><a href='/login'>Log in </a></li>
                     <li><a href='/search'>Search </a></li>
-                    <li><a href='/favoritedList'>Favorited List</a></li>
+                    <li><a href='/favorites'>Favorites</a></li>
                 </ul>
             </section>
         );

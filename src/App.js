@@ -5,7 +5,6 @@ import Nav from './Nav';
 import Footer from './Footer';
 import SearchPage from './SearchPage';
 import Login from './auth/Login';
-import Register from './auth/Register';
 import './App.css';
 import FavoritedList from './FavoritedList';
 import FavoritesContext from './FavoritesContext';

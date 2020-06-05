@@ -1,21 +1,12 @@
 import React, { Component } from 'react'
-import dummyStore from './dummyStore';
 
 class Place extends Component{
-    state = {
-       favorites:[]
-
-    };
-
-    componentDidMount() {
-        setTimeout(() => this.setState(dummyStore), 600);
-    }
-    render(){
+    render(){               
         return (
-            <div className='Place'>
-                <h2> {this.props.name} </h2>
-                <p>{this.props.rating}</p> 
-                    <p>{this.props.address} </p>
+            <div className='Place' id={this.props.id}>
+                <h2 id='name'> {this.props.name} </h2>
+                <p id='rating'>{this.props.rating}</p> 
+                    <p id='address'>{this.props.address} </p>
                     <i class="fas fa-heart"
                         onClick={this.props.onClick}
                     ></i>
