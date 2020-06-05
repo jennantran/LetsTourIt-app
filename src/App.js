@@ -8,12 +8,42 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 import './App.css';
 import FavoritedList from './FavoritedList';
+import FavoritesContext from './FavoritesContext';
+import dummyStore from './dummyStore';
 
 class App extends Component {
+   state = {
+     favorites: [],
+   }
   
+
+   setFavorites = favorites => {
+     this.setState({
+       favorites: [],
+     })
+   }
+
+
+   addFavorite = favorite => {
+     this.setState({
+       favorites: [...this.state.favorites,favorite]
+     })
+   }
+   componentDidMount() {
+    // fake date loading from API call
+    setTimeout(() => this.setState(dummyStore), 600);
+}
+
+
   render(){
+    const contextValue = {
+      favorites: this.state.favorites,
+      addFavorite: this.addFavorite
+    }
+
     return (
       <div className='app'>
+      <FavoritesContext.Provider value={contextValue}>
         <nav>
           <Nav/>
         </nav>
@@ -21,10 +51,10 @@ class App extends Component {
           <Route exact path='/' component={HomePage} />
           <Route path='/search' component={SearchPage} />
           <Route path='/login' component={Login} />
-          {/* <Route path='/register' component={Register} /> */}
-          {/* <Route path='/favoritedList' component={FavoritedList} /> */}
+          <Route path='/favorites' component={FavoritedList} />
           
         </main>
+        </FavoritesContext.Provider>
         <footer>
           <Footer/>
         </footer>

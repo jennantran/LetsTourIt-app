@@ -1,16 +1,27 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React, { Component } from 'react'
+import dummyStore from './dummyStore';
 
-export default function Place(props) {
-  return (
-    <div className='Place'>
-        <h2> {props.name} </h2>
-        <p>{props.rating}</p> 
-            <p>{props.address} </p>
-            <i class="fas fa-heart"
-                onClick={props.onClick}
-            ></i>
-    </div>
+class Place extends Component{
+    state = {
+       favorites:[]
 
-  )
-}
+    };
+
+    componentDidMount() {
+        setTimeout(() => this.setState(dummyStore), 600);
+    }
+    render(){
+        return (
+            <div className='Place'>
+                <h2> {this.props.name} </h2>
+                <p>{this.props.rating}</p> 
+                    <p>{this.props.address} </p>
+                    <i class="fas fa-heart"
+                        onClick={this.props.onClick}
+                    ></i>
+            </div>
+
+        )
+        }
+    }
+export default Place;
