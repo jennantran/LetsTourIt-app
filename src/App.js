@@ -14,6 +14,7 @@ import dummyStore from './dummyStore';
 class App extends Component {
    state = {
      favorites: [],
+     addFavorite: this.addFavorite,
    }
   
 
@@ -28,6 +29,8 @@ class App extends Component {
      this.setState({
        favorites: [...this.state.favorites,favorite]
      })
+     setTimeout(() => console.log(this.state));
+     
    }
    componentDidMount() {
     // fake date loading from API call

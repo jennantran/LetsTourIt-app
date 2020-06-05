@@ -2,6 +2,10 @@
     box-sizing: border-box;
   }
 
+  header{
+    display: block;
+  }
+
   body {
     font-family: "Open Sans",
     sans-serif; 
@@ -15,7 +19,7 @@
 
   nav,
   footer {
-    padding: .20% 0;
+    padding: .10% 0;
     height: 45px;
     background-color: #68d9a9;
   }
@@ -48,3 +52,5 @@
     padding-top: 50px; 
     margin-left: 20px;
 }
+
+

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './SearchBox.css';
 import Place from '../Place';
-// import FavoritesContext from './FavoritesContext';
+import FavoritesContext from '../FavoritesContext';
+import dummyStore from '../dummyStore';
+
 
 class SearchBox extends Component {
-  // static contextType = FavoritesContext;
+  static contextType = FavoritesContext;
     constructor(props){
       super(props);
       this.state = {
@@ -54,55 +56,75 @@ class SearchBox extends Component {
   favoriteToggle = (e) => {
     console.log('favorite');
     const fave = e.currentTarget.parentNode;
+    const favedetails = e.currentTarget.parentNode.children;
+
+    console.log(fave);
+    console.log(favedetails.name.textContent.trim());
+
+    // console.log(fave.name.nodeValue);
+
+
+    const faveObject = {
+            'id': fave.id,
+            'name': favedetails.name.textContent.trim(),
+            'rating': favedetails.rating.textContent,
+            'address': favedetails.address.textContent
+    }
+    console.log(faveObject);
+    this.context.addFavorite(faveObject);
     
  
   }
-  
   handleSubmit = (event) => {
     event.preventDefault();
-    const search = this.state.search;
-    const openNowCheck = this.state.openNowCheck;
-    const selectedValue = this.state.selectedValue;
-    const lat = this.state.currentLocation.lat;
-    const lng = this.state.currentLocation.lng;
-    const searchUrl= search.replace(/s/g,"%20");
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const baseUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchUrl}`;
-    const radius = `&radius=${selectedValue}`;
-    const location =`&location=${lat},${lng}`;
-    const open = `&opennow`;
-    const API = '&key=AIzaSyBoLFRF2RY7_h5pL0k4Yo96Q5XI9ivlAAw';
+    setTimeout(() => this.setState(dummyStore), 600);
+  }
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const search = this.state.search;
+  //   const openNowCheck = this.state.openNowCheck;
+  //   const selectedValue = this.state.selectedValue;
+  //   const lat = this.state.currentLocation.lat;
+  //   const lng = this.state.currentLocation.lng;
+  //   const searchUrl= search.replace(/s/g,"%20");
+  //   const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+  //   const baseUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchUrl}`;
+  //   const radius = `&radius=${selectedValue}`;
+  //   const location =`&location=${lat},${lng}`;
+  //   const open = `&opennow`;
+  //   const API = '&key=AIzaSyBoLFRF2RY7_h5pL0k4Yo96Q5XI9ivlAAw';
     
-    let url = proxyUrl + baseUrl + radius + location + open + API;
+  //   let url = proxyUrl + baseUrl + radius + location + open + API;
     
-    if(!openNowCheck){
-       url =proxyUrl + baseUrl + radius + location +  API;
-    }else{
-        console.log('looks good');
-    }
+  //   if(!openNowCheck){
+  //      url =proxyUrl + baseUrl + radius + location +  API;
+  //   }else{
+  //       console.log('looks good');
+  //   }
 
-    fetch(url)
-      .then(response => response.json())
-      .then(json => {
-         this.setState({
-           results: json.results
-         })
-      })
-      .catch(function(err){
-        console.log('There was an error');
-      })
-    }
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .then(json => {
+  //        this.setState({
+  //          results: json.results
+  //        })
+  //     })
+  //     .catch(function(err){
+  //       console.log('There was an error');
+  //     })
+  //   }
 
     render() {
       this.updateLocation();
       const resultList = this.state.results;
-      const places = resultList.map((resultItem, place_id) => {
+      const places = resultList.map((resultItem) => {
         return <ul>
-                  <li key={resultItem.place_id}> 
+                  <li key={resultItem.id}> 
                       <Place
-                        id={resultItem.place_id}
+                        id={resultItem.id}
                         name={resultItem.name}
-                        address={resultItem.formatted_address}
+                        // address={resultItem.formatted_address}
+                        address={resultItem.address}
                         rating={resultItem.rating}
                         onClick={ e => this.favoriteToggle(e)}
                       />

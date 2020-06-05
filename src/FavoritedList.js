@@ -13,16 +13,16 @@ class FavoritedList extends Component{
             <section className = 'favList'>
                 <h2>Favorites</h2>
                 <ul className='favoritesList'>
-            {favorites.map(favorite =>
-                <Favorite
-                key={favorite.id}
-                name={favorite.name}
-                rating ={favorite.rating}
-                address= {favorite.address}
-                />
-            )}
-            </ul>
-        </section>
+                    {favorites.map(favorite =>
+                        <Favorite
+                        key={favorite.id}
+                        name={favorite.name}
+                        rating ={favorite.rating}
+                        address= {favorite.address}
+                        />
+                    )}
+                 </ul>
+            </section>
         );
     }
 }
