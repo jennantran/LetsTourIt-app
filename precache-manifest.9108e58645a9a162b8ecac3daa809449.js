@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "16b0b5c474d463575ae45b17509842c8",
+    "revision": "6a7c4259397a08fbf44ee85216690529",
     "url": "/letstourit-app/index.html"
   },
   {
-    "revision": "7ad819c954969af28aeb",
-    "url": "/letstourit-app/static/css/main.153d3ca4.chunk.css"
+    "revision": "050d9ed3b257d58e74bd",
+    "url": "/letstourit-app/static/css/main.2e99be91.chunk.css"
   },
   {
     "revision": "ca8a192616bc63143ddb",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/letstourit-app/static/js/2.7c87a185.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7ad819c954969af28aeb",
+    "revision": "050d9ed3b257d58e74bd",
     "url": "/letstourit-app/static/js/main.ed150d65.chunk.js"
   },
   {
