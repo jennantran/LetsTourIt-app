@@ -14,8 +14,15 @@ class App extends Component {
    state = {
      favorites: [],
      addFavorite: this.addFavorite,
+     deleteFavorite: this.deleteFavorite
    }
   
+   componentDidMount() {
+    // fake date loading from API call
+    setTimeout(() => this.setState(dummyStore), 600);
+}
+
+
 
    setFavorites = favorites => {
      this.setState({
@@ -31,16 +38,18 @@ class App extends Component {
      setTimeout(() => console.log(this.state));
      
    }
-   componentDidMount() {
-    // fake date loading from API call
-    setTimeout(() => this.setState(dummyStore), 600);
-}
 
+  deleteFavorite(faveId){
+    this.setState({
+      favorites: this.state.favorites.filter(favorite => favorite.id !==faveId)
+    })
+  }
 
   render(){
     const contextValue = {
       favorites: this.state.favorites,
-      addFavorite: this.addFavorite
+      addFavorite: this.addFavorite,
+      deleteFavorite: this.deleteFavorite
     }
 
     return (
@@ -53,8 +62,7 @@ class App extends Component {
           <Route exact path='/' component={HomePage} />
           <Route path='/search' component={SearchPage} />
           <Route path='/login' component={Login} />
-          <Route path='/favorites' component={FavoritedList} />
-          
+          <Route path='/favorites' component={FavoritedList} />    
         </main>
         </FavoritesContext.Provider>
         <footer>
