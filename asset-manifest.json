@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/letstourit-app/static/css/main.b3178ae5.chunk.css",
+    "main.css": "/letstourit-app/static/css/main.153d3ca4.chunk.css",
     "main.js": "/letstourit-app/static/js/main.ed150d65.chunk.js",
     "main.js.map": "/letstourit-app/static/js/main.ed150d65.chunk.js.map",
     "runtime-main.js": "/letstourit-app/static/js/runtime-main.828250bd.js",
@@ -8,16 +8,16 @@
     "static/js/2.7c87a185.chunk.js": "/letstourit-app/static/js/2.7c87a185.chunk.js",
     "static/js/2.7c87a185.chunk.js.map": "/letstourit-app/static/js/2.7c87a185.chunk.js.map",
     "index.html": "/letstourit-app/index.html",
-    "precache-manifest.3825a4ee37a3b5a50888d0002dfc6b5f.js": "/letstourit-app/precache-manifest.3825a4ee37a3b5a50888d0002dfc6b5f.js",
+    "precache-manifest.36f0bed009ae3acd0e9c3b15799b7331.js": "/letstourit-app/precache-manifest.36f0bed009ae3acd0e9c3b15799b7331.js",
     "service-worker.js": "/letstourit-app/service-worker.js",
-    "static/css/main.b3178ae5.chunk.css.map": "/letstourit-app/static/css/main.b3178ae5.chunk.css.map",
+    "static/css/main.153d3ca4.chunk.css.map": "/letstourit-app/static/css/main.153d3ca4.chunk.css.map",
     "static/js/2.7c87a185.chunk.js.LICENSE.txt": "/letstourit-app/static/js/2.7c87a185.chunk.js.LICENSE.txt",
     "static/media/compass.jpg": "/letstourit-app/static/media/compass.a050b103.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.828250bd.js",
     "static/js/2.7c87a185.chunk.js",
-    "static/css/main.b3178ae5.chunk.css",
+    "static/css/main.153d3ca4.chunk.css",
     "static/js/main.ed150d65.chunk.js"
   ]
 }
