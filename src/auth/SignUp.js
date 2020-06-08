@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Login.css';
+import './SignUp.css';
 
-class Login extends Component{
+class SignUp extends Component{
     state = {
         email: '',
         password: ''
@@ -9,9 +9,9 @@ class Login extends Component{
 
     render(){
         return(
-            <div className='loginForm'>
+            <div className='registerForm'>
                 <form>
-                    <h1>Login</h1>
+                    <h1>Sign Up: </h1>
                     <label>
                         Email:
                         <input type='text' name='email' />
@@ -27,4 +27,4 @@ class Login extends Component{
     }
 }
 
-export default Login;
+export default SignUp;

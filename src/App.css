@@ -52,5 +52,28 @@
     padding-top: 50px; 
     margin-left: 20px;
 }
+img.compass{
+  margin: 50px;
+} 
+.header{
+   padding: 80px;
+   margin-top: 50px;
+}
+
+@media only screen and (max-width: 480px) {
+  .compass{
+     width: 200%;
+
+     display: block;
+ 
+ 
+  }
+ 
+  .header{
+      display: block;
+      margin-top: 400px;
+      margin-right: 40px;
+  }
+ }
 
 

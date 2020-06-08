@@ -9,6 +9,7 @@ import './App.css';
 import FavoritedList from './FavoritedList';
 import FavoritesContext from './FavoritesContext';
 import dummyStore from './dummyStore';
+import SignUp from './auth/Signup'
 
 class App extends Component {
    state = {
@@ -56,6 +57,7 @@ class App extends Component {
           <Route exact path='/' component={HomePage} />
           <Route path='/search' component={SearchPage} />
           <Route path='/login' component={Login} />
+          <Route path='/signUp' component={SignUp} />
           <Route path='/favorites' component={FavoritedList} />
     
         </main>

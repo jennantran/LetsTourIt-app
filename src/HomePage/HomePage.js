@@ -4,7 +4,7 @@ import './HomePage.css';
 
  class HomePage extends Component {
     handleClick(e) {
-        this.props.history.push('/register')
+        this.props.history.push('/signUp')
     }
      
     render(){
