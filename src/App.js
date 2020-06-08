@@ -22,15 +22,6 @@ class App extends Component {
     setTimeout(() => this.setState(dummyStore), 600);
 }
 
-
-
-   setFavorites = favorites => {
-     this.setState({
-       favorites: [],
-     })
-   }
-
-
    addFavorite = favorite => {
      this.setState({
        favorites: [...this.state.favorites,favorite]
@@ -39,10 +30,13 @@ class App extends Component {
      
    }
 
-  deleteFavorite(faveId){
+  deleteFavorite = (faveId) =>{
+    console.log(faveId);
+    console.log(this);
     this.setState({
-      favorites: this.state.favorites.filter(favorite => favorite.id !==faveId)
+      favorites: this.state.favorites.filter(favorite => favorite.id !== faveId)
     })
+    setTimeout(() => console.log(this.state));
   }
 
   render(){
@@ -51,7 +45,7 @@ class App extends Component {
       addFavorite: this.addFavorite,
       deleteFavorite: this.deleteFavorite
     }
-
+    console.log(this.state);
     return (
       <div className='app'>
       <FavoritesContext.Provider value={contextValue}>
@@ -62,7 +56,8 @@ class App extends Component {
           <Route exact path='/' component={HomePage} />
           <Route path='/search' component={SearchPage} />
           <Route path='/login' component={Login} />
-          <Route path='/favorites' component={FavoritedList} />    
+          <Route path='/favorites' component={FavoritedList} />
+    
         </main>
         </FavoritesContext.Provider>
         <footer>

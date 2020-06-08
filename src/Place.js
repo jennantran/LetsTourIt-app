@@ -7,7 +7,7 @@ class Place extends Component{
                 <h2 id='name'> {this.props.name} </h2>
                 <p id='rating'>{this.props.rating}</p> 
                     <p id='address'>{this.props.address} </p>
-                    <i class="fas fa-heart"
+                    <i className="fas fa-heart"
                         onClick={this.props.onClick}
                     ></i>
             </div>

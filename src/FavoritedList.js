@@ -7,7 +7,17 @@ class FavoritedList extends Component{
         error:  null,
         favorites:[]
     }
-   static contextType = FavoritesContext;
+
+static contextType = FavoritesContext;
+handleDelete = (e) => {
+    console.log('delete');
+    const deleteItem= e.currentTarget.parentNode;
+    console.log(deleteItem.id);
+
+    const faveId = deleteItem.id;
+    this.context.deleteFavorite(faveId);
+
+}
     render(){
         const { favorites } = this.context
         console.log(favorites);
@@ -21,7 +31,7 @@ class FavoritedList extends Component{
                         name={favorite.name}
                         rating ={favorite.rating}
                         address= {favorite.address}
-                        onClick={ e => this.deleteToggle(e)}
+                        onClick={ (e) => this.handleDelete(e)}
                         />
                     )}
                  </ul>

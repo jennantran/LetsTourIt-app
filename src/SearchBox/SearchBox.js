@@ -59,6 +59,7 @@ class SearchBox extends Component {
     const favedetails = e.currentTarget.parentNode.children;
 
     console.log(fave);
+    console.log(favedetails);
     console.log(favedetails.name.textContent.trim());
 
     // console.log(fave.name.nodeValue);
@@ -124,8 +125,7 @@ class SearchBox extends Component {
                       <Place
                         id={resultItem.id}
                         name={resultItem.name}
-                        // address={resultItem.formatted_address}
-                        address={resultItem.address}
+                        address={resultItem.formatted_address}
                         rating={resultItem.rating}
                         onClick={ e => this.favoriteToggle(e)}
                       />
