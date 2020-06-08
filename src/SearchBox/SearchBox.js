@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './SearchBox.css';
 import Place from '../Place';
 import FavoritesContext from '../FavoritesContext';
-// import dummyStore from '../dummyStore';
-
 
 class SearchBox extends Component {
   static contextType = FavoritesContext;
@@ -153,7 +151,7 @@ class SearchBox extends Component {
                           value='openNow' 
                           id='filterByHours' 
                           name='filterByHours'
-                          onClick={ (e) => this.favoriteToggle(e.target.value)} 
+                          onClick={ (e) => this.checkboxToggle(e.target.value)} 
                           />
                         Open Now
                       </label>

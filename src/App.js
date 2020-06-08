@@ -9,7 +9,7 @@ import './App.css';
 import FavoritedList from './FavoritedList';
 import FavoritesContext from './FavoritesContext';
 import dummyStore from './dummyStore';
-import SignUp from './auth/Signup'
+import SignUp from './auth/SignUp';
 
 class App extends Component {
    state = {

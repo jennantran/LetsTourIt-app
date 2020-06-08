@@ -9,18 +9,31 @@ class SignUp extends Component{
 
     render(){
         return(
-            <div className='registerForm'>
+            <div className='signUpForm'>
                 <form>
                     <h1>Sign Up: </h1>
                     <label>
                         Email:
-                        <input type='text' name='email' />
+                        <input 
+                            type='text' 
+                            name='email'
+                            placeholder='email'
+                            onChange={(e) => this.onChange(e)}
+                            value={this.state.password}
+                             />
                     </label>
                     <label>
                         Password
-                        <input type='text' name='password' />
+                        <input 
+                            type='password'
+                            name='password'
+                            placeholder='password'
+                            onChange={(e) => this.onChange(e)} 
+                            value={this.state.password} />
                     </label>
-                    <input type='submit' value='submit' />
+                    <input type='submit' 
+                            value='submit'
+                            onClick = {() => this.onSubmit} />
                 </form>
             </div>
         )
