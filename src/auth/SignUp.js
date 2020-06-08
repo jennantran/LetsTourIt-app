@@ -7,6 +7,20 @@ class SignUp extends Component{
         password: ''
     }
 
+    onChangePw = (e) => {
+        this.setState({
+            password: e.target.value,
+        })
+        console.log(this.state.password);
+    }
+
+    onChangeEmail = (e) => {
+        this.setState({
+            email: e.target.value,
+        })
+        console.log(this.state.email)
+    }
+
     render(){
         return(
             <div className='signUpForm'>
@@ -18,20 +32,22 @@ class SignUp extends Component{
                             type='text' 
                             name='email'
                             placeholder='email'
-                            onChange={(e) => this.onChange(e)}
-                            value={this.state.password}
+                            onChangeEmail={(e) => this.onChangeE(e)}
                              />
                     </label>
                     <label>
                         Password
                         <input 
+                            required
                             type='password'
                             name='password'
                             placeholder='password'
-                            onChange={(e) => this.onChange(e)} 
-                            value={this.state.password} />
+                            onChangePw={(e) => this.onChangePw(e)} 
+                             />
                     </label>
-                    <input type='submit' 
+                    <input 
+                            required
+                            type='submit' 
                             value='submit'
                             onClick = {() => this.onSubmit} />
                 </form>
