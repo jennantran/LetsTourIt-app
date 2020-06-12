@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
 import ValidationError from './ValidationError';
+import TokenService from '../services/token-service';
 
 class Login extends Component{
     constructor(props) {
@@ -28,6 +29,9 @@ class Login extends Component{
     handleSubmit = (e) => {
         e.preventDefault();
         const { user, password } = this.state;
+        TokenService.saveAuthToken(
+            TokenService.makeBasicAuthToken(user.value, password.value)
+          )
         console.log('User',user);
         console.log('Password',password);
     }
