@@ -55,10 +55,10 @@ class App extends Component {
         </nav>
         <main>
           <Route exact path='/' component={HomePage} />
-          <Route path='/letstourit-app/search' component={SearchPage} />
-          <Route path='/letstourit-app/login' component={Login} />
-          <Route path='/letstourit-app/signUp' component={SignUp} />
-          <Route path='/letstourit-app/favorites' component={FavoritedList} />
+          <Route path='/search' component={SearchPage} />
+          <Route path='/login' component={Login} />
+          <Route path='/signUp' component={SignUp} />
+          <Route path='/favorites' component={FavoritedList} />
     
         </main>
         </FavoritesContext.Provider>
