@@ -74,10 +74,7 @@ class SearchBox extends Component {
     
  
   }
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   setTimeout(() => this.setState(dummyStore), 600);
-  // }
+
   handleSubmit = (event) => {
     event.preventDefault();
     const search = this.state.search;

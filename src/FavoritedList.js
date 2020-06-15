@@ -16,8 +16,8 @@ handleDelete = (e) => {
 
     const faveId = deleteItem.id;
     this.context.deleteFavorite(faveId);
-
 }
+
     render(){
         const { favorites } = this.context
         console.log(favorites);
@@ -39,7 +39,6 @@ handleDelete = (e) => {
         );
     }
 }
-
 FavoritedList.defaultProps = {
     favorites: []
 };

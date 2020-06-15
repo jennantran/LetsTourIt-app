@@ -10,18 +10,90 @@ import FavoritedList from './FavoritedList';
 import FavoritesContext from './FavoritesContext';
 import dummyStore from './dummyStore';
 import SignUp from './auth/SignUp';
+import TokenService from './services/token-service'
+import AuthApiService from './services/auth-api-service'
 
 class App extends Component {
    state = {
      favorites: [],
      addFavorite: this.addFavorite,
-     deleteFavorite: this.deleteFavorite
+     deleteFavorite: this.deleteFavorite,
+     error: null,
    }
   
-   componentDidMount() {
-    // fake date loading from API call
-    setTimeout(() => this.setState(dummyStore), 600);
-}
+//    componentDidMount() {
+//     // fake date loading from API call
+//     setTimeout(() => this.setState(dummyStore), 600);
+// }
+
+
+
+  handlePostAuthenticate = ({ username, password }) => {
+    console.log(username.value)
+    console.log(password.value)
+    AuthApiService.postLogin({
+      username: username.value,
+      password: password.value,
+    })
+      .then(res => {
+        console.log(username.value)
+        console.log(password.value)
+        console.log(res.authToken);
+        TokenService.saveAuthToken(res.authToken)
+        console.log(res.user_id);
+        // this.handleGetFavorites();
+        fetch(process.env.REACT_APP_SERVER_URL + `/favorites`, {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "authorization": `basic ${TokenService.getAuthToken()}`,
+                "user_id": res.user_id
+              },
+            })
+              .then((response) => response.json())
+              .then((responseJson) => {
+                if (responseJson.success && responseJson.success === false) {
+                  throw new Error("error in getting favorites");
+                } else {
+                  this.setState({
+                    favorites: responseJson,
+                  });
+                }
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+      });
+  };
+
+  // componentDidMount(){
+  //   console.log(TokenService.getAuthToken())
+  //   
+
+
+
+    // componentDidMount(){
+    //   const baseUrl = 'http://localhost:8000';
+    //   const faveEndPoint = '/favorites';
+
+    //  fetch(process.env.REACT_APP_SERVER_URL + faveEndPoint)
+    //     .then(results => {
+    //       if(!results.ok){
+    //         return results.json().then(e => Promise.reject(e));
+    //       }
+    //       return results.json()
+    //     })
+    //     .then(favorites => {
+    //       console.log(favorites);
+    //       this.setState({ favorites });
+    //     })
+    //     .catch(error => {
+    //       console.error({ error })
+    //     });
+    //   }
 
    addFavorite = favorite => {
      this.setState({
@@ -44,7 +116,8 @@ class App extends Component {
     const contextValue = {
       favorites: this.state.favorites,
       addFavorite: this.addFavorite,
-      deleteFavorite: this.deleteFavorite
+      deleteFavorite: this.deleteFavorite,
+      handlePostAuthenticate: this.handlePostAuthenticate
     }
     console.log(this.state);
     return (

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './Login.css';
 import ValidationError from './ValidationError';
-import TokenService from '../services/token-service';
+import FavoritesContext from '../FavoritesContext';
+
 
 class Login extends Component{
+    static contextType = FavoritesContext;
+
     constructor(props) {
         super(props);
         this.state = {
-            user: {
+            username: {
             value: '',
             touched: false
             },
@@ -18,29 +21,26 @@ class Login extends Component{
         }
      }
 
-    updateUser(user) {
-        this.setState({user: {value: user, touched: true}});
+    updateUser(username) {
+        this.setState({username: {value: username, touched: true}});
         }
         
     updatePassword(password) {
     this.setState({password: {value: password, touched: true}});
     }
-
+    
     handleSubmit = (e) => {
         e.preventDefault();
-        const { user, password } = this.state;
-        TokenService.saveAuthToken(
-            TokenService.makeBasicAuthToken(user.value, password.value)
-          )
-        console.log('User',user);
-        console.log('Password',password);
-    }
+        this.context.handlePostAuthenticate(this.state);
+        this.props.history.push('/favorites');
+      }
+
     validateUser() {
-        const user = this.state.user.value.trim();
-        if (user.length === 0) {
-          return "user is required";
-        } else if (user.length < 3) {
-          return "User must be at least 3 characters long";
+        const username = this.state.username.value.trim();
+        if (username.length === 0) {
+          return "username is required";
+        } else if (username.length < 3) {
+          return "Username must be at least 3 characters long";
         }
       }
     
@@ -50,8 +50,6 @@ class Login extends Component{
           return 'Password is required';
         } else if (password.length < 6 || password.length > 72) {
           return 'Password must be between 6 and 72 characters long';
-        } else if (!password.match(/[0-9]/)) {
-          return 'Password must contain at least one number';
         }
       }
 
@@ -63,14 +61,14 @@ class Login extends Component{
                 <form className='userForm' onSubmit={ e => this.handleSubmit(e)}>
                     <h1>Login</h1>
                     <label>
-                        User:
+                        Username:
                         <input 
                             type='text' 
                             className='formInput'
                             name='user'
                             id='user'
                             onChange={e => this.updateUser(e.target.value)}/>
-                             {this.state.user.touched && <ValidationError message={userError} />}
+                             {this.state.username.touched && <ValidationError message={userError} />}
                     </label>
                     <label>
                         Password:
