@@ -112,6 +112,12 @@ class App extends Component {
     setTimeout(() => console.log(this.state));
   }
 
+  clearFavorites = () => {
+    this.setState({
+      favorites: [],
+    })
+  }
+
   render(){
     const contextValue = {
       favorites: this.state.favorites,

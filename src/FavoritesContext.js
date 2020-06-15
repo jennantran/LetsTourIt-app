@@ -5,7 +5,8 @@ const FavoritesContext = React.createContext({
     addFavorite: () => {},
     deleteFavorite: () => {},
     handlePostAuthenticate: () => {},
-    handleLogoutClick: () => {}
+    handleLogoutClick: () => {},
+    clearFavorites: () => {}
 });
 
 export default FavoritesContext;

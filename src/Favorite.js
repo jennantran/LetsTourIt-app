@@ -1,6 +1,5 @@
 import React from 'react';
 import FavoritesContext from './FavoritesContext';
-import config from './config';
 
 class Favorite extends React.Component {
     static contextType = FavoritesContext;
@@ -8,7 +7,6 @@ class Favorite extends React.Component {
     render(){
         return (
             <div className='favorite' id={this.props.id}>
-             
                     <div className='favoriteName'>
                         {this.props.name}
                         {this.props.rating} 

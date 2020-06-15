@@ -6,15 +6,17 @@ import FavoritesContext from './FavoritesContext';
 
 class Nav extends Component {
   static contextType = FavoritesContext;
-    state = {
+  constructor(props){
+    super(props);
+    this.state = {
       authToken: undefined,
-      favorites: this.context.favorites,
     }
-
+  }
     handleLogoutClick = () => {
         TokenService.clearAuthToken();
         console.log(this.state);
-        this.setState({authToken: undefined, favorites: []})
+        this.setState({authToken: undefined})
+        this.context.clearFavorites();
         
     }
   
