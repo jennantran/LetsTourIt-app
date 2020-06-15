@@ -74,16 +74,34 @@ class App extends Component {
   //   
 
 
-  addFavorite = favorite => {
-    this.setState({
-      favorites: [...this.state.favorites,favorite]
-    })
-    setTimeout(() => console.log(this.state));
+  // addFavorite = favorite => {
+  //   this.setState({
+  //     favorites: [...this.state.favorites,favorite]
+  //   })
+  //   setTimeout(() => console.log(this.state));
     
+  // }
+
+  addFavorite(place_id) {
+    return fetch(`${process.env.REACT_APP_SERVER_UR}/favorites/place_id`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `basic ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        place_id: place_id,
+      }),
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
   }
 
-  deleteFavorite = (faveId) => {
-    fetch(process.env.REACT_APP_SERVER_URL + `/favorites/${faveId}`, {
+  deleteFavorite = (place_id) => {
+    fetch(process.env.REACT_APP_SERVER_URL + `/favorites/${place_id}`, {
       method: "delete",
       headers: {
         "Content-Type": "application/json",
