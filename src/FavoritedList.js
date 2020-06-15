@@ -12,8 +12,6 @@ static contextType = FavoritesContext;
 handleDelete = (e) => {
     console.log('delete');
     const deleteItem= e.currentTarget.parentNode;
-    console.log(deleteItem.id);
-
     const faveId = deleteItem.id;
     this.context.deleteFavorite(faveId);
 }

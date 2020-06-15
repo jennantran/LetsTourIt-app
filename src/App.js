@@ -74,36 +74,30 @@ class App extends Component {
   //   
 
 
+  addFavorite = favorite => {
+    this.setState({
+      favorites: [...this.state.favorites,favorite]
+    })
+    setTimeout(() => console.log(this.state));
+    
+  }
 
-    // componentDidMount(){
-    //   const baseUrl = 'http://localhost:8000';
-    //   const faveEndPoint = '/favorites';
+  deleteFavorite = (faveId) => {
+    fetch(process.env.REACT_APP_SERVER_URL + `/favorites/${faveId}`, {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        "authorization": `basic ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => this.handleDeleteFavorite())
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
+  };
 
-    //  fetch(process.env.REACT_APP_SERVER_URL + faveEndPoint)
-    //     .then(results => {
-    //       if(!results.ok){
-    //         return results.json().then(e => Promise.reject(e));
-    //       }
-    //       return results.json()
-    //     })
-    //     .then(favorites => {
-    //       console.log(favorites);
-    //       this.setState({ favorites });
-    //     })
-    //     .catch(error => {
-    //       console.error({ error })
-    //     });
-    //   }
-
-   addFavorite = favorite => {
-     this.setState({
-       favorites: [...this.state.favorites,favorite]
-     })
-     setTimeout(() => console.log(this.state));
-     
-   }
-
-  deleteFavorite = (faveId) =>{
+  handleDeleteFavorite = (faveId) =>{
     console.log(faveId);
     console.log(this);
     this.setState({
@@ -123,7 +117,8 @@ class App extends Component {
       favorites: this.state.favorites,
       addFavorite: this.addFavorite,
       deleteFavorite: this.deleteFavorite,
-      handlePostAuthenticate: this.handlePostAuthenticate
+      handlePostAuthenticate: this.handlePostAuthenticate,
+      clearFavorites: this.clearFavorites
     }
     console.log(this.state);
     return (
