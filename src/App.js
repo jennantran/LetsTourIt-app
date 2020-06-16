@@ -30,19 +30,17 @@ class App extends Component {
 
 
   handlePostAuthenticate = ({ username, password, user_id }) => {
-    console.log(username.value)
-    console.log(password.value)
     AuthApiService.postLogin({
       username: username.value,
       password: password.value,
     })
       .then(res => {
-        console.log(username.value)
-        console.log(password.value)
-        console.log(res.authToken);
+        // console.log(username.value)
+        // console.log(password.value)
+        // console.log(res.authToken);
         TokenService.saveAuthToken(res.authToken)
-        console.log(res.user_id);
 
+        // console.log(TokenService.getAuthToken())
         this.setState({
           user_id: res.user_id
         })
@@ -51,7 +49,7 @@ class App extends Component {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
-                "authorization": `basic ${TokenService.getAuthToken()}`,
+                "Authorization": `bearer ${TokenService.getAuthToken()}`,
                 "user_id": res.user_id
               },
             })
@@ -87,61 +85,62 @@ class App extends Component {
     
   // }
 
-getAllFavorites(){
-    fetch(process.env.REACT_APP_SERVER_URL + `/favorites`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "authorization": `basic ${TokenService.getAuthToken()}`,
-      },
-    })
-    .then((res) => res.json())
-    .catch((error) => {
-      console.error(error);
-      this.setState({ error });
-    });
-};
+// getAllFavorites(){
+//     fetch(process.env.REACT_APP_SERVER_URL + `/favorites`, {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "authorization": `basic ${TokenService.getAuthToken()}`,
+//       },
+//     })
+//     .then((res) => res.json()
+//     .catch(error( {error})
+//   }
 
   addFavorite(place) {
+    console.log(TokenService.getAuthToken());
+    console.log(place);
     return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {
       method: 'POST',
       headers: {
-        'content-type': 'application/json',
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({place}),
     })
       .then(res =>
-        // console.log(res)
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
   }
 
-  deleteFavorite = (place_id) => {
-    fetch(process.env.REACT_APP_SERVER_URL + `/favorites/${place_id}`, {
-      method: "delete",
+  deleteFavorite = (place) => {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {
+      method: 'delete',
       headers: {
-        "Content-Type": "application/json",
-        "authorization": `basic ${TokenService.getAuthToken()}`,
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
-      .then((res) => this.handleDeleteFavorite())
+      .then((res) => res.json())
+      .then((res) =>  {
+          return res
+       })
       .catch((error) => {
         console.error(error);
         this.setState({ error });
       });
   };
 
-  handleDeleteFavorite = (faveId) =>{
-    console.log(faveId);
-    console.log(this);
-    this.setState({
-      favorites: this.state.favorites.filter(favorite => favorite.id !== faveId)
-    })
-    setTimeout(() => console.log(this.state));
-  }
+  // handleDeleteFavorite = (faveId) =>{
+  //   console.log(faveId);
+  //   console.log(this);
+  //   this.setState({
+  //     favorites: this.state.favorites.filter(favorite => favorite.id !== faveId)
+  //   })
+  //   setTimeout(() => console.log(this.state));
+  // }
 
   clearFavorites = () => {
     this.setState({
@@ -158,7 +157,6 @@ getAllFavorites(){
       clearFavorites: this.clearFavorites,
       user_id: this.state.user_id
     }
-    console.log(this.state);
     return (
       <div className='app'>
       <FavoritesContext.Provider value={contextValue}>

@@ -116,7 +116,7 @@ class SearchBox extends Component {
     render() {
       this.updateLocation();
       const resultList = this.state.results;
-      console.log(resultList);
+      // console.log(resultList);
       const places = resultList.map((resultItem) => {
         return <ul>
                   <li key={resultItem.id}> 
