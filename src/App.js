@@ -19,6 +19,7 @@ class App extends Component {
      addFavorite: this.addFavorite,
      deleteFavorite: this.deleteFavorite,
      error: null,
+     user_id: '',
    }
   
 //    componentDidMount() {
@@ -28,7 +29,7 @@ class App extends Component {
 
 
 
-  handlePostAuthenticate = ({ username, password }) => {
+  handlePostAuthenticate = ({ username, password, user_id }) => {
     console.log(username.value)
     console.log(password.value)
     AuthApiService.postLogin({
@@ -41,6 +42,10 @@ class App extends Component {
         console.log(res.authToken);
         TokenService.saveAuthToken(res.authToken)
         console.log(res.user_id);
+
+        this.setState({
+          user_id: res.user_id
+        })
         // this.handleGetFavorites();
         fetch(process.env.REACT_APP_SERVER_URL + `/favorites`, {
               method: "GET",
@@ -82,18 +87,32 @@ class App extends Component {
     
   // }
 
-  addFavorite(place_id) {
-    return fetch(`${process.env.REACT_APP_SERVER_UR}/favorites/place_id`, {
+getAllFavorites(){
+    fetch(process.env.REACT_APP_SERVER_URL + `/favorites`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "authorization": `basic ${TokenService.getAuthToken()}`,
+      },
+    })
+    .then((res) => res.json())
+    .catch((error) => {
+      console.error(error);
+      this.setState({ error });
+    });
+};
+
+  addFavorite(place) {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         'authorization': `basic ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify({
-        place_id: place_id,
-      }),
+      body: JSON.stringify({place}),
     })
       .then(res =>
+        // console.log(res)
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
@@ -136,7 +155,8 @@ class App extends Component {
       addFavorite: this.addFavorite,
       deleteFavorite: this.deleteFavorite,
       handlePostAuthenticate: this.handlePostAuthenticate,
-      clearFavorites: this.clearFavorites
+      clearFavorites: this.clearFavorites,
+      user_id: this.state.user_id
     }
     console.log(this.state);
     return (

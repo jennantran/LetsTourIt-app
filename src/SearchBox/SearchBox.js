@@ -12,6 +12,7 @@ class SearchBox extends Component {
         results: [],
         selectedValue: '5',
         openNowCheck: false,
+        user_id: '',
         currentLocation: {
           lat: '',
           lng: ''
@@ -67,9 +68,11 @@ class SearchBox extends Component {
             'id': fave.id,
             'name': favedetails.name.textContent.trim(),
             'rating': favedetails.rating.textContent,
-            'address': favedetails.address.textContent
+            'address': favedetails.address.textContent,
+            'user_id': this.context.user_id,
     }
     console.log(faveObject);
+    console.log(this.state.user_id);
     this.context.addFavorite(faveObject);
     
  
