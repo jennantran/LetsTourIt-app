@@ -7,16 +7,11 @@ class Favorite extends React.Component {
     render(){
         return (
             <div className='favorite' id={this.props.id}>
-                    <div className='favoriteName'>
-                        {this.props.name}
-                        {this.props.rating} 
-                    </div>
-                   
-                <div className='favoriteAddress'>
-                    {this.props.address}
-                </div>
+                <h2 id='name'>{this.props.name + ' '}</h2>
+                <p id='rating'>{this.props.rating}</p> 
+                <p id='address'>{this.props.address} </p>
                 <button className='delete'
-                        onClick={this.props.onClick}>Delete</button>
+                    onClick={this.props.onClick}>Delete</button>
             </div>
         )
      };

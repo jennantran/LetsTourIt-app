@@ -58,6 +58,7 @@ class App extends Component {
                 if (responseJson.success && responseJson.success === false) {
                   throw new Error("error in getting favorites");
                 } else {
+                  console.log(responseJson);
                   this.setState({
                     favorites: responseJson,
                   });
@@ -117,7 +118,7 @@ class App extends Component {
 
   deleteFavorite = (place) => {
     return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {
-      method: 'delete',
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -125,7 +126,8 @@ class App extends Component {
     })
       .then((res) => res.json())
       .then((res) =>  {
-          return res
+          return res;
+          console.log(res);
        })
       .catch((error) => {
         console.error(error);
