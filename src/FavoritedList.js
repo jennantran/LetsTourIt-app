@@ -34,6 +34,7 @@ handleDelete = (e) => {
 }   
 console.log(deleteObject);
 this.context.deleteFavorite(deleteObject);
+
 }
 
     render(){

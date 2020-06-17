@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './SearchBox.css';
 import Place from '../Place';
 import FavoritesContext from '../FavoritesContext';
+import TokenService from '../services/token-service'
 
 class SearchBox extends Component {
   static contextType = FavoritesContext;
@@ -52,6 +53,7 @@ class SearchBox extends Component {
       })
   }
 
+ 
   favoriteToggle = (e) => {
     console.log('favorite');
     const fave = e.currentTarget.parentNode;
@@ -73,10 +75,34 @@ class SearchBox extends Component {
     }
     console.log(faveObject);
     console.log(this.state.user_id);
-    this.context.addFavorite(faveObject);
-    
- 
+    fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${faveObject.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({faveObject}),
+    })
+    .then((res) => {
+      console.log(res);
+      if(!res.ok){
+          return res.json().then(e => Promise.reject(e))
+      }
+      return res.json()
+    })
+    .then((data) => {
+        this.context.addFavorite(data);
+        console.log(data);
+    })
+    .catch(error => {
+        console.error(error);
+    });  
+    // this.addFavorite(faveObject);
   }
+//   addFavorite = (faveObject) => {
+//     console.log(TokenService.getAuthToken());
+//     return 
+// }
 
   handleSubmit = (event) => {
     event.preventDefault();

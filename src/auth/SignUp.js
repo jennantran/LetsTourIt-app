@@ -40,6 +40,7 @@ class SignUp extends Component{
         console.log('User',username);
         console.log('Password',password);
         this.context.addUser(newUser);
+        alert('Successful sign up');
         this.handleRegistrationRedirect();
 
     }
