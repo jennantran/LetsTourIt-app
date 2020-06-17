@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the HomePage UI as expected 1`] = `
+<div
+  className="app"
+>
+  <nav>
+    <section
+      className="nav"
+    >
+      <h2>
+        JustTourIt.
+      </h2>
+      <ul>
+        <li>
+          <a
+            href="/"
+            onClick={[Function]}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="/search"
+            onClick={[Function]}
+          >
+            Search 
+          </a>
+        </li>
+        <li>
+          <a
+            href="/favorites"
+            onClick={[Function]}
+          >
+            Favorites
+          </a>
+        </li>
+        <li
+          className="notLogged-in"
+        >
+          <a
+            href="/login"
+            onClick={[Function]}
+          >
+            Log in
+          </a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+  <main>
+    <div
+      className="homePage"
+    >
+      <section
+        className="homePageSect"
+      >
+        <div>
+          <img
+            alt="bay-bridge"
+            className="compass"
+            src="compass.jpg"
+          />
+        </div>
+        <div
+          className="header"
+        >
+          <h1>
+            Let the Exploring Begin
+          </h1>
+          <p>
+            <em>
+              Don't know what to do? 
+            </em>
+          </p>
+          <p>
+            <em>
+              Search for things to do and things to eat. 
+            </em>
+          </p>
+          <button
+            onClick={[Function]}
+          >
+            Sign Up
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <footer
+      className="Footer"
+    >
+      <p>
+        ©Jennifer Tran, 2020. All Rights Reserved.
+      </p>
+    </footer>
+  </footer>
+</div>
+`;
