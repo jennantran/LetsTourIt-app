@@ -110,9 +110,9 @@ class App extends Component {
       body: JSON.stringify({place}),
     })
       .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
+        this.setState({
+          favorites: [...this.state.favorites, place]
+        })
       )
   }
 
@@ -124,10 +124,12 @@ class App extends Component {
         'Authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
-      .then((res) => res.json())
       .then((res) =>  {
-          return res;
-          console.log(res);
+        console.log(place);
+        this.setState({
+            favorites: this.state.favorites.filter(p=> p.id !== place.id)
+          })
+          return(res);
        })
       .catch((error) => {
         console.error(error);
@@ -135,14 +137,13 @@ class App extends Component {
       });
   };
 
-  // handleDeleteFavorite = (faveId) =>{
-  //   console.log(faveId);
-  //   console.log(this);
-  //   this.setState({
-  //     favorites: this.state.favorites.filter(favorite => favorite.id !== faveId)
-  //   })
-  //   setTimeout(() => console.log(this.state));
-  // }
+    // handleDeleteFavorite = (placeId) =>{
+    //   console.log(placeId);
+    //   console.log(this);
+    //   this.setState({
+    //     favorites: this.state.favorites.filter(place=> place.id !== placeId)
+    //   })
+    // }
 
   clearFavorites = () => {
     this.setState({
