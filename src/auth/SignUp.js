@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './SignUp.css';
 import ValidationError from './ValidationError';
-import TokenService from '../services/token-service';
+import { withRouter } from 'react-router-dom'; 
+import FavoritesContext from '../FavoritesContext';
 
 class SignUp extends Component{
+    static contextType = FavoritesContext;
     constructor(props) {
         super(props);
         this.state = {
-            user: {
+            username: {
             value: '',
             touched: false
             },
@@ -18,8 +20,13 @@ class SignUp extends Component{
         }
      }
 
-    updateUser(user) {
-        this.setState({user: {value: user, touched: true}});
+    handleRegistrationRedirect = () => {
+        const { history } = this.props
+        history.push('/login')
+      }
+
+    updateUser(username) {
+        this.setState({username: {value: username, touched: true}});
         }
         
     updatePassword(password) {
@@ -28,19 +35,20 @@ class SignUp extends Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const { user, password } = this.state;
-        TokenService.saveAuthToken(
-            TokenService.makeBasicAuthToken(user.value, password.value)
-          )
-        console.log('User',user);
+        const { username, password } = this.state;
+        const newUser = { username, password }
+        console.log('User',username);
         console.log('Password',password);
+        this.context.addUser(newUser);
+        this.handleRegistrationRedirect();
+
     }
-    validateUser() {
-        const user = this.state.user.value.trim();
-        if (user.length === 0) {
-          return "user is required";
-        } else if (user.length < 3) {
-          return "User must be at least 3 characters long";
+    validateUsername() {
+        const username = this.state.username.value.trim();
+        if (username.length === 0) {
+          return "username is required";
+        } else if (username.length < 3) {
+          return "Username must be at least 3 characters long";
         }
       }
     
@@ -56,7 +64,7 @@ class SignUp extends Component{
       }
 
     render(){
-        const userError = this.validateUser();
+        const userError = this.validateUsername();
         const passwordError = this.validatePassword();
         return(
             <div className='signUpForm'>
@@ -70,7 +78,7 @@ class SignUp extends Component{
                             name='user'
                             id='user'
                             onChange={e => this.updateUser(e.target.value)}/>
-                             {this.state.user.touched && <ValidationError message={userError} />}
+                             {this.state.username.touched && <ValidationError message={userError} />}
                     </label>
                     <label>
                         Password:
@@ -92,4 +100,4 @@ class SignUp extends Component{
     }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

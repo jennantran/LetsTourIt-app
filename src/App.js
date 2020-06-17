@@ -18,6 +18,7 @@ class App extends Component {
      favorites: [],
      addFavorite: this.addFavorite,
      deleteFavorite: this.deleteFavorite,
+     addUser: this.addUser,
      error: null,
      user_id: '',
    }
@@ -98,7 +99,7 @@ class App extends Component {
 //     .catch(error( {error})
 //   }
 
-  addFavorite(place) {
+  addFavorite = (place) => {
     console.log(TokenService.getAuthToken());
     console.log(place);
     return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {
@@ -137,13 +138,20 @@ class App extends Component {
       });
   };
 
-    // handleDeleteFavorite = (placeId) =>{
-    //   console.log(placeId);
-    //   console.log(this);
-    //   this.setState({
-    //     favorites: this.state.favorites.filter(place=> place.id !== placeId)
-    //   })
-    // }
+  addUser = (username) => {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/signUp`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({username}),
+    })
+      .then(res =>
+        this.setState({
+          favorites: [...this.state.favorites, username]
+        })
+      )
+  }
 
   clearFavorites = () => {
     this.setState({
@@ -158,7 +166,8 @@ class App extends Component {
       deleteFavorite: this.deleteFavorite,
       handlePostAuthenticate: this.handlePostAuthenticate,
       clearFavorites: this.clearFavorites,
-      user_id: this.state.user_id
+      user_id: this.state.user_id,
+      addUser: this.addUser
     }
     return (
       <div className='app'>
