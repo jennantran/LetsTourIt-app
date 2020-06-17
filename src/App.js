@@ -146,11 +146,6 @@ class App extends Component {
       },
       body: JSON.stringify({username}),
     })
-      .then(res =>
-        this.setState({
-          favorites: [...this.state.favorites, username]
-        })
-      )
   }
 
   clearFavorites = () => {
