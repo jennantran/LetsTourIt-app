@@ -23,13 +23,6 @@ class App extends Component {
      user_id: '',
    }
   
-//    componentDidMount() {
-//     // fake date loading from API call
-//     setTimeout(() => this.setState(dummyStore), 600);
-// }
-
-
-
   handlePostAuthenticate = ({ username, password, user_id }) => {
     AuthApiService.postLogin({
       username: username.value,
@@ -79,13 +72,13 @@ class App extends Component {
   //   
 
 
-  // addFavorite = favorite => {
-  //   this.setState({
-  //     favorites: [...this.state.favorites,favorite]
-  //   })
-  //   setTimeout(() => console.log(this.state));
+  addFavorite = favorite => {
+    this.setState({
+      favorites: [...this.state.favorites,favorite]
+    })
+    setTimeout(() => console.log(this.state));
     
-  // }
+  }
 
 // getAllFavorites(){
 //     fetch(process.env.REACT_APP_SERVER_URL + `/favorites`, {
@@ -99,23 +92,28 @@ class App extends Component {
 //     .catch(error( {error})
 //   }
 
-  addFavorite = (place) => {
-    console.log(TokenService.getAuthToken());
-    console.log(place);
-    return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `bearer ${TokenService.getAuthToken()}`,
-      },
-      body: JSON.stringify({place}),
-    })
-      .then(res =>
-        this.setState({
-          favorites: [...this.state.favorites, place]
-        })
-      )
-  }
+  // addFavorite = (place) => {
+  //   console.log(TokenService.getAuthToken());
+  //   console.log(place);
+  //   return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': `bearer ${TokenService.getAuthToken()}`,
+  //     },
+  //     body: JSON.stringify({place}),
+  //   })
+  //     .then((res) =>{
+  //       if(res.ok){
+  //         console.log(this.state);
+  //         this.setState({
+  //           favorites: [...this.state.favorites, place]
+  //         })
+  //       }
+  //     }
+  //     )
+  // }
+
 
   deleteFavorite = (place) => {
     return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {
