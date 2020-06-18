@@ -3,6 +3,7 @@ import './SearchBox.css';
 import Place from '../Place';
 import FavoritesContext from '../FavoritesContext';
 import TokenService from '../services/token-service'
+const dotenv = require('dotenv');
 
 class SearchBox extends Component {
   static contextType = FavoritesContext;
@@ -91,7 +92,6 @@ class SearchBox extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
     const openNowCheck = this.state.openNowCheck;
     const selectedValue = this.state.selectedValue;
     const lat = this.state.currentLocation.lat;
@@ -99,7 +99,6 @@ class SearchBox extends Component {
     const radius = `&radius=${selectedValue}`;
     const location =`&location=${lat},${lng}`;
     const open = `&opennow`;
-    const API = '&key=AIzaSyBoLFRF2RY7_h5pL0k4Yo96Q5XI9ivlAAw';
 
     const baseUrl = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=';
     const params = [];
@@ -115,13 +114,13 @@ class SearchBox extends Component {
       params.push(`location=${lat},${lng}`)
     }
     if(!openNowCheck){
-       url =baseUrl + radius + location +  API;
+       url = `${baseUrl}?${radius}?${location}?${process.env.API_KEY}`;
     }else{
         params.push(`${open}`)
     }
 
     const query = params.join('&');
-      url = `${baseUrl}?${query}?${API}`;
+    url = `${baseUrl}?${query}?${process.env.API_KEY}`;
     console.log(url)
 
     return fetch(url)
