@@ -91,28 +91,40 @@ class SearchBox extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const search = this.state.search;
+
     const openNowCheck = this.state.openNowCheck;
     const selectedValue = this.state.selectedValue;
     const lat = this.state.currentLocation.lat;
     const lng = this.state.currentLocation.lng;
-    const searchUrl= search.replace(/s/g,"%20");
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    const baseUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${searchUrl}`;
     const radius = `&radius=${selectedValue}`;
     const location =`&location=${lat},${lng}`;
     const open = `&opennow`;
     const API = '&key=AIzaSyBoLFRF2RY7_h5pL0k4Yo96Q5XI9ivlAAw';
-    let url = proxyUrl + baseUrl + radius + location + open + API;
- 
-    
+
+    const baseUrl = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=';
+    const params = [];
+    let url;
+
+    if(this.state.search){
+      params.push(`search=${this.state.search}`)
+    }
+    if(radius){
+      params.push(`radius=${selectedValue}`)
+    }
+    if(location){
+      params.push(`location=${lat},${lng}`)
+    }
     if(!openNowCheck){
-       url =proxyUrl + baseUrl + radius + location +  API;
+       url =baseUrl + radius + location +  API;
     }else{
-        console.log('looks good');
+        params.push(`${open}`)
     }
 
-    fetch(url)
+    const query = params.join('&');
+      url = `${baseUrl}?${query}?${API}`;
+    console.log(url)
+
+    return fetch(url)
       .then(response => response.json())
       .then(json => {
          this.setState({
@@ -127,7 +139,6 @@ class SearchBox extends Component {
     render() {
       this.updateLocation();
       const resultList = this.state.results;
-      // console.log(resultList);
       const places = resultList.map((resultItem) => {
         return <ul>
                   <li key={resultItem.id}> 
