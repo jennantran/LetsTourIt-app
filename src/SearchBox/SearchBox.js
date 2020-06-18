@@ -55,16 +55,8 @@ class SearchBox extends Component {
 
  
   favoriteToggle = (e) => {
-    console.log('favorite');
     const fave = e.currentTarget.parentNode;
     const favedetails = e.currentTarget.parentNode.children;
-
-    console.log(fave);
-    console.log(favedetails);
-    console.log(favedetails.name.textContent.trim());
-
-    // console.log(fave.name.nodeValue);
-
 
     const faveObject = {
             'id': fave.id,
@@ -73,8 +65,7 @@ class SearchBox extends Component {
             'address': favedetails.address.textContent,
             'user_id': this.context.user_id,
     }
-    console.log(faveObject);
-    console.log(this.state.user_id);
+
     fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${faveObject.id}`, {
       method: 'POST',
       headers: {
@@ -84,7 +75,6 @@ class SearchBox extends Component {
       body: JSON.stringify({faveObject}),
     })
     .then((res) => {
-      console.log(res);
       if(!res.ok){
           return res.json().then(e => Promise.reject(e))
       }
@@ -92,7 +82,6 @@ class SearchBox extends Component {
     })
     .then((data) => {
         this.context.addFavorite(data);
-        console.log(data);
     })
     .catch(error => {
         console.error(error);

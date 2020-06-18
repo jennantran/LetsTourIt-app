@@ -37,8 +37,6 @@ class SignUp extends Component{
         e.preventDefault();
         const { username, password } = this.state;
         const newUser = { username, password }
-        console.log('User',username);
-        console.log('Password',password);
         this.context.addUser(newUser);
         alert('Successful sign up');
         this.handleRegistrationRedirect();
