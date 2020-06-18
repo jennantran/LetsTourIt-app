@@ -10,14 +10,6 @@ class FavoritedList extends Component{
 
 static contextType = FavoritesContext;
 
-// handleDelete = (e) => {
-//     console.log('delete');
-//     const deleteItem= e.currentTarget.parentNode;
-//     const faveId = deleteItem.id;
-//     this.context.deleteFavorite(faveId);
-// }
-
-
 handleDelete = (e) => {
     console.log('delete');
     const deleteItem= e.currentTarget.parentNode.children;
@@ -34,9 +26,7 @@ handleDelete = (e) => {
 }   
 console.log(deleteObject);
 this.context.deleteFavorite(deleteObject);
-
 }
-
     render(){
         const { favorites } = this.context
         console.log(favorites);

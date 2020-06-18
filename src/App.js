@@ -8,7 +8,6 @@ import Login from './auth/Login';
 import './App.css';
 import FavoritedList from './FavoritedList';
 import FavoritesContext from './FavoritesContext';
-import dummyStore from './dummyStore';
 import SignUp from './auth/SignUp';
 import TokenService from './services/token-service'
 import AuthApiService from './services/auth-api-service'
@@ -29,16 +28,10 @@ class App extends Component {
       password: password.value,
     })
       .then(res => {
-        // console.log(username.value)
-        // console.log(password.value)
-        // console.log(res.authToken);
         TokenService.saveAuthToken(res.authToken)
-
-        // console.log(TokenService.getAuthToken())
         this.setState({
           user_id: res.user_id
         })
-        // this.handleGetFavorites();
         fetch(process.env.REACT_APP_SERVER_URL + `/favorites`, {
               method: "GET",
               headers: {
@@ -66,18 +59,11 @@ class App extends Component {
         this.setState({ error: res.error })
       });
   };
-
-  // componentDidMount(){
-  //   console.log(TokenService.getAuthToken())
-  //   
-
-
   addFavorite = favorite => {
     this.setState({
       favorites: [...this.state.favorites,favorite]
     })
-    setTimeout(() => console.log(this.state));
-    
+    setTimeout(() => console.log(this.state)); 
   }
 
 // getAllFavorites(){

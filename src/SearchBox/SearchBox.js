@@ -97,12 +97,8 @@ class SearchBox extends Component {
     .catch(error => {
         console.error(error);
     });  
-    // this.addFavorite(faveObject);
+
   }
-//   addFavorite = (faveObject) => {
-//     console.log(TokenService.getAuthToken());
-//     return 
-// }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -118,8 +114,8 @@ class SearchBox extends Component {
     const location =`&location=${lat},${lng}`;
     const open = `&opennow`;
     const API = '&key=AIzaSyBoLFRF2RY7_h5pL0k4Yo96Q5XI9ivlAAw';
-    
     let url = proxyUrl + baseUrl + radius + location + open + API;
+ 
     
     if(!openNowCheck){
        url =proxyUrl + baseUrl + radius + location +  API;

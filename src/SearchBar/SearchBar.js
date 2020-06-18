@@ -7,8 +7,7 @@ class SearchBar extends Component {
         return(
                 <div className='searchbarControls'>
                     <SearchBox/>   
-                </div>
-     
+                </div>   
         );
     }
 }
