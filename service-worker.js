@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/letstourit-app/precache-manifest.9108e58645a9a162b8ecac3daa809449.js"
+  "/letstourit-app/precache-manifest.94744ee86ff1ab10ae46dca53a151ba1.js"
 );
 
 self.addEventListener('message', (event) => {

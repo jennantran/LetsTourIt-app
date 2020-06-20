@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/letstourit-app/static/css/main.2e99be91.chunk.css",
-    "main.js": "/letstourit-app/static/js/main.ed150d65.chunk.js",
-    "main.js.map": "/letstourit-app/static/js/main.ed150d65.chunk.js.map",
+    "main.css": "/letstourit-app/static/css/main.37c38f8b.chunk.css",
+    "main.js": "/letstourit-app/static/js/main.049a512b.chunk.js",
+    "main.js.map": "/letstourit-app/static/js/main.049a512b.chunk.js.map",
     "runtime-main.js": "/letstourit-app/static/js/runtime-main.828250bd.js",
     "runtime-main.js.map": "/letstourit-app/static/js/runtime-main.828250bd.js.map",
-    "static/js/2.7c87a185.chunk.js": "/letstourit-app/static/js/2.7c87a185.chunk.js",
-    "static/js/2.7c87a185.chunk.js.map": "/letstourit-app/static/js/2.7c87a185.chunk.js.map",
+    "static/js/2.c3ed10dc.chunk.js": "/letstourit-app/static/js/2.c3ed10dc.chunk.js",
+    "static/js/2.c3ed10dc.chunk.js.map": "/letstourit-app/static/js/2.c3ed10dc.chunk.js.map",
     "index.html": "/letstourit-app/index.html",
-    "precache-manifest.9108e58645a9a162b8ecac3daa809449.js": "/letstourit-app/precache-manifest.9108e58645a9a162b8ecac3daa809449.js",
+    "precache-manifest.94744ee86ff1ab10ae46dca53a151ba1.js": "/letstourit-app/precache-manifest.94744ee86ff1ab10ae46dca53a151ba1.js",
     "service-worker.js": "/letstourit-app/service-worker.js",
-    "static/css/main.2e99be91.chunk.css.map": "/letstourit-app/static/css/main.2e99be91.chunk.css.map",
-    "static/js/2.7c87a185.chunk.js.LICENSE.txt": "/letstourit-app/static/js/2.7c87a185.chunk.js.LICENSE.txt",
+    "static/css/main.37c38f8b.chunk.css.map": "/letstourit-app/static/css/main.37c38f8b.chunk.css.map",
+    "static/js/2.c3ed10dc.chunk.js.LICENSE.txt": "/letstourit-app/static/js/2.c3ed10dc.chunk.js.LICENSE.txt",
     "static/media/compass.jpg": "/letstourit-app/static/media/compass.a050b103.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.828250bd.js",
-    "static/js/2.7c87a185.chunk.js",
-    "static/css/main.2e99be91.chunk.css",
-    "static/js/main.ed150d65.chunk.js"
+    "static/js/2.c3ed10dc.chunk.js",
+    "static/css/main.37c38f8b.chunk.css",
+    "static/js/main.049a512b.chunk.js"
   ]
 }
