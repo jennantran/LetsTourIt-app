@@ -9,8 +9,9 @@ import './App.css';
 import FavoritedList from './FavoritedList';
 import FavoritesContext from './FavoritesContext';
 import SignUp from './auth/SignUp';
-import TokenService from './services/token-service'
-import AuthApiService from './services/auth-api-service'
+import TokenService from './services/token-service';
+import AuthApiService from './services/auth-api-service';
+import API_ENDPOINT from './config';
 
 class App extends Component {
    state = {
@@ -32,7 +33,7 @@ class App extends Component {
         this.setState({
           user_id: res.user_id
         })
-        fetch(process.env.REACT_APP_SERVER_URL + `/favorites`, {
+        fetch(`${API_ENDPOINT}/favorites`, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
@@ -65,41 +66,6 @@ class App extends Component {
     })
     setTimeout(() => console.log(this.state)); 
   }
-
-// getAllFavorites(){
-//     fetch(process.env.REACT_APP_SERVER_URL + `/favorites`, {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//         "authorization": `basic ${TokenService.getAuthToken()}`,
-//       },
-//     })
-//     .then((res) => res.json()
-//     .catch(error( {error})
-//   }
-
-  // addFavorite = (place) => {
-  //   console.log(TokenService.getAuthToken());
-  //   console.log(place);
-  //   return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': `bearer ${TokenService.getAuthToken()}`,
-  //     },
-  //     body: JSON.stringify({place}),
-  //   })
-  //     .then((res) =>{
-  //       if(res.ok){
-  //         console.log(this.state);
-  //         this.setState({
-  //           favorites: [...this.state.favorites, place]
-  //         })
-  //       }
-  //     }
-  //     )
-  // }
-
 
   deleteFavorite = (place) => {
     return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {

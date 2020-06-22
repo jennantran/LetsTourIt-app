@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './SearchBox.css';
 import Place from '../Place';
 import FavoritesContext from '../FavoritesContext';
-import TokenService from '../services/token-service'
+import TokenService from '../services/token-service';
+import API_ENDPOINT from '../config';
 
 class SearchBox extends Component {
   static contextType = FavoritesContext;
@@ -66,7 +67,7 @@ class SearchBox extends Component {
             'user_id': this.context.user_id,
     }
 
-    fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${faveObject.id}`, {
+    fetch(`${API_ENDPOINT}/favorites/${faveObject.id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -88,6 +89,7 @@ class SearchBox extends Component {
     });  
 
   }
+
 
   handleSubmit = (event) => {
     event.preventDefault();

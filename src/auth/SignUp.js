@@ -82,7 +82,7 @@ class SignUp extends Component{
                     <label>
                         Password:
                         <input 
-                            type='text' 
+                            type='password' 
                             name='password'
                             className='formInput'
                             id='password'
