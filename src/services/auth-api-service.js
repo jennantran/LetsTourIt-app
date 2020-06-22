@@ -1,6 +1,8 @@
+import API_ENDPOINT from '../config';
+
 const AuthApiService = {
   postLogin(credentials) {
-    return fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login`, {
+    return fetch(`${API_ENDPOINT.API_ENDPOINT}/auth/login`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

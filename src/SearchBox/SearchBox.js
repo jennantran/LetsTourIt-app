@@ -67,7 +67,7 @@ class SearchBox extends Component {
             'user_id': this.context.user_id,
     }
 
-    fetch(`${API_ENDPOINT}/favorites/${faveObject.id}`, {
+    fetch(`${API_ENDPOINT.API_ENDPOINT}/favorites/${faveObject.id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ class SearchBox extends Component {
     }else{
     console.log('looks good');
   } 
-  
+
     return fetch(url)
       .then(response => response.json())
       .then(json => {

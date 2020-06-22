@@ -33,7 +33,7 @@ class App extends Component {
         this.setState({
           user_id: res.user_id
         })
-        fetch(`${API_ENDPOINT}/favorites`, {
+        fetch(`${API_ENDPOINT.API_ENDPOINT}/favorites`, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
