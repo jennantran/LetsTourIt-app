@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/letstourit-app/static/css/main.37c38f8b.chunk.css",
-    "main.js": "/letstourit-app/static/js/main.049a512b.chunk.js",
-    "main.js.map": "/letstourit-app/static/js/main.049a512b.chunk.js.map",
-    "runtime-main.js": "/letstourit-app/static/js/runtime-main.828250bd.js",
-    "runtime-main.js.map": "/letstourit-app/static/js/runtime-main.828250bd.js.map",
-    "static/js/2.c3ed10dc.chunk.js": "/letstourit-app/static/js/2.c3ed10dc.chunk.js",
-    "static/js/2.c3ed10dc.chunk.js.map": "/letstourit-app/static/js/2.c3ed10dc.chunk.js.map",
-    "index.html": "/letstourit-app/index.html",
-    "precache-manifest.94744ee86ff1ab10ae46dca53a151ba1.js": "/letstourit-app/precache-manifest.94744ee86ff1ab10ae46dca53a151ba1.js",
-    "service-worker.js": "/letstourit-app/service-worker.js",
-    "static/css/main.37c38f8b.chunk.css.map": "/letstourit-app/static/css/main.37c38f8b.chunk.css.map",
-    "static/js/2.c3ed10dc.chunk.js.LICENSE.txt": "/letstourit-app/static/js/2.c3ed10dc.chunk.js.LICENSE.txt",
-    "static/media/compass.jpg": "/letstourit-app/static/media/compass.a050b103.jpg"
+    "main.css": "/static/css/main.37c38f8b.chunk.css",
+    "main.js": "/static/js/main.c12cd31b.chunk.js",
+    "main.js.map": "/static/js/main.c12cd31b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b8b8ca80.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b8b8ca80.js.map",
+    "static/js/2.c3ed10dc.chunk.js": "/static/js/2.c3ed10dc.chunk.js",
+    "static/js/2.c3ed10dc.chunk.js.map": "/static/js/2.c3ed10dc.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.f17365ce969a620c7b762019d6ba27a6.js": "/precache-manifest.f17365ce969a620c7b762019d6ba27a6.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.37c38f8b.chunk.css.map": "/static/css/main.37c38f8b.chunk.css.map",
+    "static/js/2.c3ed10dc.chunk.js.LICENSE.txt": "/static/js/2.c3ed10dc.chunk.js.LICENSE.txt",
+    "static/media/compass.jpg": "/static/media/compass.a050b103.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.828250bd.js",
+    "static/js/runtime-main.b8b8ca80.js",
     "static/js/2.c3ed10dc.chunk.js",
     "static/css/main.37c38f8b.chunk.css",
-    "static/js/main.049a512b.chunk.js"
+    "static/js/main.c12cd31b.chunk.js"
   ]
 }
