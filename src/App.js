@@ -88,14 +88,20 @@ class App extends Component {
       });
   };
 
-  addUser = (username) => {
+  addUser = (user) => {
+    console.log(user);
     return fetch(`${API_ENDPOINT.API_ENDPOINT}/signUp`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({username}),
+      body: JSON.stringify(user),
     })
+    .then( res => 
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+      )
   }
 
   clearFavorites = () => {
