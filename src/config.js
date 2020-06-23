@@ -1,4 +1,4 @@
 export default {
-    API_ENDPOINT: `https://young-citadel-05531.herokuapp.com`,
+    API_ENDPOINT: `https://tranquil-reaches-30641.herokuapp.com/api`,
     TOKEN_KEY: 'tour-client-auth-token',    
   }

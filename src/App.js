@@ -89,7 +89,7 @@ class App extends Component {
   };
 
   addUser = (username) => {
-    return fetch(`${process.env.REACT_APP_SERVER_URL}/signUp`, {
+    return fetch(`${API_ENDPOINT.API_ENDPOINT}/signUp`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
