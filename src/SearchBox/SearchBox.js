@@ -66,6 +66,7 @@ class SearchBox extends Component {
             'address': favedetails.address.textContent,
             'user_id': this.context.user_id,
     }
+    console.log(faveObject.id);
 
     fetch(`${API_ENDPOINT.API_ENDPOINT}/favorites/${faveObject.id}`, {
       method: 'POST',

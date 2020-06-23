@@ -1,5 +1,5 @@
 export default {
-    API_ENDPOINT: 'http://localhost:8000/api',
+    API_ENDPOINT: 'https://tranquil-reaches-30641.herokuapp.com/api',
     TOKEN_KEY: 'tour-client-auth-token',
     
   }
