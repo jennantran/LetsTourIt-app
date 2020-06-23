@@ -11,7 +11,7 @@ import FavoritesContext from './FavoritesContext';
 import SignUp from './auth/SignUp';
 import TokenService from './services/token-service';
 import AuthApiService from './services/auth-api-service';
-import API_ENDPOINT from './config';
+import API_ENDPOINT from './config'
 
 class App extends Component {
    state = {
@@ -68,7 +68,7 @@ class App extends Component {
   }
 
   deleteFavorite = (place) => {
-    return fetch(`${process.env.REACT_APP_SERVER_URL}/favorites/${place.id}`, {
+    return fetch(`${API_ENDPOINT.API_ENDPOINT}/favorites/${place.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
