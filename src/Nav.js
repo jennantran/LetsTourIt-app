@@ -22,13 +22,13 @@ class Nav extends Component {
   
     renderLogoutLink() {
       return (
-        <li className='loggedIn'>
-          <Link
-            onClick={this.handleLogoutClick}
-            to='/login'>
-            Logout
-          </Link>
-        </li>
+          <li className='loggedIn'>
+            <Link
+              onClick={this.handleLogoutClick}
+              to='/login'>
+              Logout
+            </Link>
+          </li> 
       )
     }
   
@@ -50,7 +50,10 @@ class Nav extends Component {
                   <ul> 
                       <li><Link to='/'>Home</Link></li>
                       <li><Link to='/search'>Search </Link></li>
-                      <li><Link to='/favorites'>Favorites</Link></li>
+                      {TokenService.hasAuthToken()
+                          ? <li><Link id='favorites' to='/favorites'>Favorites</Link></li>
+                          : null}
+                      
                       {TokenService.hasAuthToken()
                           ? this.renderLogoutLink()
                           : this.renderLoginLink()}

@@ -33,15 +33,7 @@ class SignUp extends Component{
     this.setState({password: {value: password, touched: true}});
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        const { username, password } = this.state;
-        const newUser = { username, password }
-        this.context.addUser(newUser);
-        alert('Successful sign up');
-        this.handleRegistrationRedirect();
 
-    }
     validateUsername() {
         const username = this.state.username.value.trim();
         if (username.length === 0) {
@@ -61,16 +53,33 @@ class SignUp extends Component{
           return 'Password must contain at least one number';
         }
       }
+    
+  
+    handleSubmit = (e) => {
+      e.preventDefault();
+      const { username, password } = this.state;
+      const newUser = { username, password }
+      this.context.addUser(newUser);
+      this.handleRegistrationRedirect();
+    }
 
+    handleVerify = (e) => {
+      if(!this.state.username.value || !this.state.password.value){
+        alert('Invalid username or password');
+      }else{
+        alert('Account created successfuly');
+        return this.handleSubmit(e);
+      }
+    }
     render(){
         const userError = this.validateUsername();
         const passwordError = this.validatePassword();
         return(
             <div className='signUpForm'>
-                <form className='userForm' onSubmit={ e => this.handleSubmit(e)}>
+                <form className='userForm' onSubmit={ e => this.handleVerify(e)}>
                     <h1>Sign Up</h1>
                     <label>
-                        User:
+                        Username:
                         <input 
                             type='text' 
                             className='formInput'

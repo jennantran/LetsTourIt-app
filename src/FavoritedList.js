@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Favorite from './Favorite';
 import FavoritesContext from './FavoritesContext';
+import './FavoritedList.css';
 
 class FavoritedList extends Component{
     state =  {
@@ -31,10 +32,11 @@ this.context.deleteFavorite(deleteObject);
         return (
             <section className = 'favList'>
                 <h2>Favorites</h2>
-                <ul className='favoritesList'>
-                    <li key={favorites.id}>
+                <ul>
+                    <li 
+                        key={favorites.id}>
                         {favorites.map(favorite =>
-                            <Favorite
+                            <Favorite 
                             id={favorite.id}
                             name={favorite.name}
                             rating ={favorite.rating}

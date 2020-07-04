@@ -82,6 +82,7 @@ class Login extends Component{
                                  <ValidationError message={passwordError} /> }
                     </label>
                     <input 
+                        id='submit'
                         type='submit' 
                         value='submit' />
                 </form>

@@ -17,11 +17,11 @@ li{
 
 a{
     text-decoration: none;
-    margin-right: 6px;
+    margin-right: 15px;
     color: white;
-    font-weight: bold;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-shadow: -1px ;
+  
 }
 a:hover {
-    background-color:#ffab23;
+    text-decoration: underline;
   }

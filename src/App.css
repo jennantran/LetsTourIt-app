@@ -6,6 +6,7 @@
     display: block;
   }
 
+  
   body {
     font-family: "Open Sans",
     sans-serif; 
@@ -60,10 +61,6 @@ img.compass{
    margin-top: 50px;
 }
 
-input#filterByHours{
-    width: 15px;
-    height: 15px;
-}
 
 @media only screen and (max-width: 480px) {
   .compass{

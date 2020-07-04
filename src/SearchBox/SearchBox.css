@@ -3,12 +3,36 @@
 	margin-left: 0.5em;
 }
 
-i{
-    cursor: pointer;
+.filter,.radius{
+    font-size: 14px; 
+}
 
+.filterOpen{
+    display:flex;
+    flex-direction: row;
+}
+
+label.filter{
+    padding: 20px 0;
+}
+.radius {
+    margin-right: 10px;
+}
+i {
+    cursor: pointer;
 }
 
 i:hover{
     transform: scale(1.6);
     color: #ffab23;
+}
+
+input#filterByHours{
+    width: 12px;
+    height: 12px;
+
+}
+
+input.submit{
+    font-weight: bold;
 }

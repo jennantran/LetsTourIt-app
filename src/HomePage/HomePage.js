@@ -16,8 +16,8 @@ import './HomePage.css';
                     </div>
                     <div className='header'>
                         <h1>Let the Exploring Begin</h1>
-                        <p>Don't know what to do? </p>
                         <p>Search for things to do and things to eat.</p>
+                        <p>Create an account to generate a favorited list!</p>
                         <button onClick={e => this.handleClick(e)}>Sign Up</button>
                     </div>
                 </section>

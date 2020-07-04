@@ -10,22 +10,21 @@ p{
 
 button {
 	box-shadow: 0px 1px 0px 0px #fff6af;
-	background:linear-gradient(to bottom, #ffec64 5%, #c09a5c 100%);
-	background-color:#ffaa22;
-	border-radius:8px;
+
+	background-color:#fcb35f;
+	border-radius:2px;
 	border:1px solid #ffaa22;
 	display:inline-block;
 	cursor:pointer;
 	color:#333333;
-	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
 	padding:7px 59px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #ffee66;
 }
+
 button:hover {
-	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+	background:linear-gradient(to bottom, #ffab23 5%, #bbb270 100%);
 	background-color:#ffab23;
 }
 button:active {

@@ -58,11 +58,11 @@ class SearchBox extends Component {
   favoriteToggle = (e) => {
     const fave = e.currentTarget.parentNode;
     const favedetails = e.currentTarget.parentNode.children;
-
+    console.log(favedetails);
     const faveObject = {
             'id': fave.id,
             'name': favedetails.name.textContent.trim(),
-            'rating': favedetails.rating.textContent,
+            'rating': favedetails.ratingContainer.children.rating.textContent,
             'address': favedetails.address.textContent,
             'user_id': this.context.user_id,
     }
@@ -159,17 +159,15 @@ class SearchBox extends Component {
                     className='submit'
                     />
                 <div className='filterOptions'>
-                  <div>
-                      <label className='filter'>
+                  <div className='filterOpen'>
+                      <label className='filter'> Open Now</label>
                       <input 
                           type='checkbox' 
                           value='openNow' 
                           id='filterByHours' 
-                          name='filterByHours'
+                          className='filterByHours'
                           onClick={ (e) => this.checkboxToggle(e.target.value)} 
-                          />
-                        Open Now
-                      </label>
+                          /> 
                       </div>
                       <div>
                       <label className='radius'>Search by Radius:</label>
