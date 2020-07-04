@@ -45,15 +45,17 @@ class Nav extends Component {
     render(){
         return(
             <section className='nav'>
-                <h2>JustTourIt.</h2>
-                <ul> 
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/search'>Search </Link></li>
-                    <li><Link to='/favorites'>Favorites</Link></li>
-                    {TokenService.hasAuthToken()
-                        ? this.renderLogoutLink()
-                        : this.renderLoginLink()}
-                </ul>
+               <Link to='/'><h2>JustTourIt.</h2></Link>
+                <div>
+                  <ul> 
+                      <li><Link to='/'>Home</Link></li>
+                      <li><Link to='/search'>Search </Link></li>
+                      <li><Link to='/favorites'>Favorites</Link></li>
+                      {TokenService.hasAuthToken()
+                          ? this.renderLogoutLink()
+                          : this.renderLoginLink()}
+                  </ul>
+                  </div>
             </section>
         );
     }

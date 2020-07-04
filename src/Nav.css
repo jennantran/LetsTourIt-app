@@ -4,7 +4,9 @@
     justify-content: center;
     align-items: center;
 }
-
+h2{
+    left: 15px;
+}
 ul{
     list-style-type: none;
 }
@@ -15,4 +17,11 @@ li{
 
 a{
     text-decoration: none;
+    margin-right: 6px;
+    color: white;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+a:hover {
+    background-color:#ffab23;
+  }

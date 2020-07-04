@@ -16,8 +16,8 @@ import './HomePage.css';
                     </div>
                     <div className='header'>
                         <h1>Let the Exploring Begin</h1>
-                        <p><em>Don't know what to do? </em></p>
-                        <p><em>Search for things to do and things to eat. </em></p>
+                        <p>Don't know what to do? </p>
+                        <p>Search for things to do and things to eat.</p>
                         <button onClick={e => this.handleClick(e)}>Sign Up</button>
                     </div>
                 </section>

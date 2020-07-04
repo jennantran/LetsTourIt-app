@@ -66,7 +66,6 @@ class SearchBox extends Component {
             'address': favedetails.address.textContent,
             'user_id': this.context.user_id,
     }
-    console.log(faveObject.id);
 
     fetch(`${API_ENDPOINT.API_ENDPOINT}/favorites/${faveObject.id}`, {
       method: 'POST',
@@ -94,6 +93,8 @@ class SearchBox extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    let elem = document.getElementById('resultsTitle');
+    elem.style.display ='block';
     const search = this.state.search;
 
     const openNowCheck = this.state.openNowCheck;
@@ -131,8 +132,8 @@ class SearchBox extends Component {
       this.updateLocation();
       const resultList = this.state.results;
       const places = resultList.map((resultItem) => {
-        return <ul>
-                  <li key={resultItem.id}> 
+        return <ul id='place'>
+                  <li key={resultItem.id} > 
                       <Place
                         id={resultItem.id}
                         name={resultItem.name}
@@ -158,6 +159,7 @@ class SearchBox extends Component {
                     className='submit'
                     />
                 <div className='filterOptions'>
+                  <div>
                       <label className='filter'>
                       <input 
                           type='checkbox' 
@@ -168,6 +170,8 @@ class SearchBox extends Component {
                           />
                         Open Now
                       </label>
+                      </div>
+                      <div>
                       <label className='radius'>Search by Radius:</label>
                       <select 
                           value = {this.state.selectedValue}
@@ -178,10 +182,11 @@ class SearchBox extends Component {
                         <option value='10'>10 miles</option>
                         <option value='20'>20 miles</option>
                     </select>
+                    </div>
                  </div>
               </form>   
             <section id='results'>
-                <h2>Search results</h2>
+                <h2 id='resultsTitle' style={{display:'none'}}>Search results</h2>
                   <ul>
                     {places}
                   </ul>
