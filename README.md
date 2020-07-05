@@ -53,5 +53,5 @@ Technologies Used
 -----------------
 1. React
 2. CSS
-3. Node
-4. Express
+3. HTML
+4. Jest
