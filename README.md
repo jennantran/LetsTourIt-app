@@ -15,6 +15,7 @@ Demo
 
 [Demo](https://letstourit.jennantran.vercel.app)
 [Repo](https://github.com/jennantran/letstourit-app)
+[Server Repo](https://github.com/jennantran/letstourit-server)
 
 Demo user account: </br>
 username: jennantran </br>
