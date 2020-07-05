@@ -13,8 +13,8 @@ Demo
 ----
 * * *
 
-[Demo](https://letstourit.jennantran.vercel.app)
-[Repo](https://github.com/jennantran/letstourit-app)
+[Demo](https://letstourit.jennantran.vercel.app) </br>
+[Repo](https://github.com/jennantran/letstourit-app) </br>
 [Server Repo](https://github.com/jennantran/letstourit-server)
 
 Demo user account: </br>
