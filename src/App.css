@@ -44,33 +44,37 @@
   }
 
   h2{
-    font-size: 16px;
-    display:flex;
+    font-size: 20px;
   }
-
   .compass{
     width: 200px;
     height: 400px;
     padding-top: 50px; 
     margin-left: 20px;
 }
-  img.compass{
-    margin: 50px;
+img.compass{
+  margin: 50px;
 } 
-  .header{
-    padding: 150px;
-    margin-top: 50px;
-    width: 500px;
+.header{
+   padding: 80px;
+   margin-top: 50px;
 }
 
 
-@media screen and (min-width:600px) {
-    
-  h2{
-    font-size: 20px;
-  }
+@media only screen and (max-width: 480px) {
+  .compass{
+     width: 200%;
 
-  .header{
-    width: 1000px;
+     display: block;
+ 
+ 
   }
-}
+ 
+  .header{
+      display: block;
+      margin-top: 400px;
+      margin-right: 40px;
+  }
+ }
+
+
