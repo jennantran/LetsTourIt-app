@@ -8,8 +8,7 @@
 
   
   body {
-    font-family: "Open Sans",
-    sans-serif; 
+    font-family: 'Alegreya';
     margin: 0;
     padding: 0;
     color: #444;
@@ -45,37 +44,33 @@
   }
 
   h2{
-    font-size: 20px;
+    font-size: 16px;
+    display:flex;
   }
+
   .compass{
     width: 200px;
     height: 400px;
     padding-top: 50px; 
     margin-left: 20px;
 }
-img.compass{
-  margin: 50px;
+  img.compass{
+    margin: 50px;
 } 
-.header{
-   padding: 80px;
-   margin-top: 50px;
+  .header{
+    padding: 150px;
+    margin-top: 50px;
+    width: 500px;
 }
 
 
-@media only screen and (max-width: 480px) {
-  .compass{
-     width: 200%;
-
-     display: block;
- 
- 
+@media screen and (min-width:600px) {
+    
+  h2{
+    font-size: 20px;
   }
- 
+
   .header{
-      display: block;
-      margin-top: 400px;
-      margin-right: 40px;
+    width: 1000px;
   }
- }
-
-
+}
