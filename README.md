@@ -22,16 +22,16 @@ Screenshots
 -----------
 
 Homepage:
-![alt text]
+![homepage](image/Homepage.png)
 
 Favorites Page:
-![alt text]
+![FavoritesPage](image/Favorites.png)
 
 Search Page:
-![alt text]
+![Search Page](image/Searchpage.png)
 
 Results: 
-![alt text]
+![Results](image/Searchresults.png)
 * * *
 
 Technologies Used
