@@ -22,14 +22,16 @@ Screenshots
 -----------
 
 Homepage:
-
+![alt text]
 
 Favorites Page:
-
+![alt text]
 
 Search Page:
+![alt text]
 
-
+Results: 
+![alt text]
 * * *
 
 Technologies Used
