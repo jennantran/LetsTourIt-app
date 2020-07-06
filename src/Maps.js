@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { GoogleApiWrapper, Map, InfoWindow, Marker } from 'google-maps-react';
 import './Maps.css';
 import CurrentLocation from './Map';
