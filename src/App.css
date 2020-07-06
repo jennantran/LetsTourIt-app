@@ -64,12 +64,8 @@ img.compass{
 @media only screen and (max-width: 480px) {
   .compass{
      width: 200%;
-
      display: block;
- 
- 
   }
- 
   .header{
       display: block;
       margin-top: 400px;
