@@ -5,7 +5,7 @@ const mapStyles = {
   map: {
     position: 'absolute',
     width: '40%',
-    height: '40%'
+    height: '40%',
   }
 };
 
@@ -52,7 +52,7 @@ if (this.props.centerAroundCurrentLocation) {
         this.setState({
         currentLocation: {
             lat: coords.latitude,
-            lng: coords.longitude
+            lng: coords.longitude,
         }
         });
     });
@@ -78,7 +78,7 @@ if (this.props && this.props.google) {
     {},
     {
         center: center,
-        zoom: zoom
+        zoom: zoom,
     }
     );
 
@@ -96,7 +96,7 @@ return React.Children.map(children, c => {
     return React.cloneElement(c, {
     map: this.map,
     google: this.props.google,
-    mapCenter: this.state.currentLocation
+    mapCenter: this.state.currentLocation,
      });
     });
 }
@@ -105,7 +105,7 @@ render() {
 const style = Object.assign({}, mapStyles.map);
 return (
     <div>
-    <div style={style} ref="map">
+    <div style={style} ref='map'>
         Loading map...
     </div>
     {this.renderChildren()}
@@ -120,8 +120,8 @@ CurrentLocation.defaultProps = {
   zoom: 14,
   initialCenter: {
     lat: -1.2884,
-    lng: 36.8233
+    lng: 36.8233,
   },
   centerAroundCurrentLocation: false,
-  visible: true
+  visible: true,
 };

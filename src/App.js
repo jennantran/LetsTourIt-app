@@ -32,13 +32,13 @@ class App extends Component {
         TokenService.saveAuthToken(res.authToken)
         this.setState({
           user_id: res.user_id
-        })
+        });
         fetch(`${API_ENDPOINT.API_ENDPOINT}/favorites`, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
                 "Authorization": `bearer ${TokenService.getAuthToken()}`,
-                "user_id": res.user_id
+                "user_id": res.user_id,
               },
             })
               .then((response) => response.json())
@@ -46,7 +46,6 @@ class App extends Component {
                 if (responseJson.success && responseJson.success === false) {
                   throw new Error("error in getting favorites");
                 } else {
-                  console.log(responseJson);
                   this.setState({
                     favorites: responseJson,
                   });
@@ -57,13 +56,13 @@ class App extends Component {
               });
       })
       .catch(res => {
-        this.setState({ error: res.error })
+        this.setState({ error: res.error });
       });
   };
   addFavorite = favorite => {
     this.setState({
       favorites: [...this.state.favorites,favorite]
-    })
+    });
     setTimeout(() => console.log(this.state)); 
   }
 
@@ -76,20 +75,17 @@ class App extends Component {
       },
     })
       .then((res) =>  {
-        console.log(place);
         this.setState({
             favorites: this.state.favorites.filter(p=> p.id !== place.id)
-          })
+          });
           return(res);
        })
       .catch((error) => {
-        console.error(error);
         this.setState({ error });
       });
   };
 
   addUser = (user) => {
-    console.log(user);
     return fetch(`${API_ENDPOINT.API_ENDPOINT}/signUp`, {
       method: 'POST',
       headers: {
@@ -100,14 +96,14 @@ class App extends Component {
     .then( res => 
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
-        : res.json()
+        : res.json(),
       )
   }
 
   clearFavorites = () => {
     this.setState({
       favorites: [],
-    })
+    });
   }
 
   render(){
@@ -118,7 +114,7 @@ class App extends Component {
       handlePostAuthenticate: this.handlePostAuthenticate,
       clearFavorites: this.clearFavorites,
       user_id: this.state.user_id,
-      addUser: this.addUser
+      addUser: this.addUser,
     }
     return (
       <div className='app'>

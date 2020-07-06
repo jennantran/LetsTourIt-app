@@ -29,7 +29,7 @@ class SearchBox extends Component {
           this.setState({
             currentLocation: {
                 lat: coords.latitude,
-                lng: coords.longitude
+                lng: coords.longitude,
             }
           });
       });
@@ -38,27 +38,26 @@ class SearchBox extends Component {
 
   updateSearch = (search) => {
     this.setState({
-      search: search
-    })
+      search: search,
+    });
   }
 
   updateRadius = (selectedValue) => {
     this.setState({
-      selectedValue: selectedValue
-    })
+      selectedValue: selectedValue,
+    });
   }
 
   checkboxToggle = () =>  {
       this.setState({
-        openNowCheck: !this.state.openNowCheck
-      })
+        openNowCheck: !this.state.openNowCheck,
+      });
   }
 
  
   favoriteToggle = (e) => {
     const fave = e.currentTarget.parentNode;
     const favedetails = e.currentTarget.parentNode.children;
-    console.log(favedetails);
     const faveObject = {
             'id': fave.id,
             'name': favedetails.name.textContent.trim(),
@@ -77,9 +76,9 @@ class SearchBox extends Component {
     })
     .then((res) => {
       if(!res.ok){
-          return res.json().then(e => Promise.reject(e))
+          return res.json().then(e => Promise.reject(e));
       }
-      return res.json()
+      return res.json();
     })
     .then((data) => {
         this.context.addFavorite(data);
@@ -121,7 +120,7 @@ class SearchBox extends Component {
       .then(json => {
          this.setState({
            results: json.results
-         })
+         });
       })
       .catch(function(err){
         console.log('There was an error');

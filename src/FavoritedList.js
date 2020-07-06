@@ -27,7 +27,7 @@ handleDelete = (e) => {
 this.context.deleteFavorite(deleteObject);
 }
     render(){
-        const { favorites } = this.context
+        const { favorites } = this.context;
       
         return (
             <section className = 'favList'>

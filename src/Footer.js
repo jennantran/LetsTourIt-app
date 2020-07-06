@@ -6,6 +6,6 @@ export default class Footer extends Component {
       <footer className='Footer'>
         <p>©Jennifer Tran, 2020. All Rights Reserved.</p>
       </footer>
-    )
+    );
   }
 }

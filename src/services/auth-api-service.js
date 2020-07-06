@@ -17,4 +17,4 @@ const AuthApiService = {
   },
 }
 
-export default AuthApiService
+export default AuthApiService;

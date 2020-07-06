@@ -8,21 +8,21 @@ export class MapContainer extends Component {
   state = {
     showingInfoWindow: false,
     activeMarker: {},
-    selectedPlace: {}
+    selectedPlace: {},
   };
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
     });
 
   onClose = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
       });
     }
   };

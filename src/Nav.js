@@ -14,8 +14,7 @@ class Nav extends Component {
   }
     handleLogoutClick = () => {
         TokenService.clearAuthToken();
-        console.log(this.state);
-        this.setState({authToken: undefined})
+        this.setState({authToken: undefined});
         this.context.clearFavorites();
         
     }

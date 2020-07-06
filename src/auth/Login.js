@@ -38,9 +38,9 @@ class Login extends Component{
     validateUser() {
         const username = this.state.username.value.trim();
         if (username.length === 0) {
-          return "username is required";
+          return 'username is required';
         } else if (username.length < 3) {
-          return "Username must be at least 3 characters long";
+          return 'Username must be at least 3 characters long';
         }
       }
     

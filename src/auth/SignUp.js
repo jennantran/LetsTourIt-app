@@ -21,8 +21,8 @@ class SignUp extends Component{
      }
 
     handleRegistrationRedirect = () => {
-        const { history } = this.props
-        history.push('/login')
+        const { history } = this.props;
+        history.push('/login');
       }
 
     updateUser(username) {
@@ -30,16 +30,16 @@ class SignUp extends Component{
         }
         
     updatePassword(password) {
-    this.setState({password: {value: password, touched: true}});
+        this.setState({password: {value: password, touched: true}});
     }
 
 
     validateUsername() {
         const username = this.state.username.value.trim();
         if (username.length === 0) {
-          return "username is required";
+          return 'username is required';
         } else if (username.length < 3) {
-          return "Username must be at least 3 characters long";
+          return 'Username must be at least 3 characters long';
         }
       }
     
@@ -58,7 +58,7 @@ class SignUp extends Component{
     handleSubmit = (e) => {
       e.preventDefault();
       const { username, password } = this.state;
-      const newUser = { username, password }
+      const newUser = { username, password };
       this.context.addUser(newUser);
       this.handleRegistrationRedirect();
     }
