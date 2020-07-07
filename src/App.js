@@ -63,7 +63,7 @@ class App extends Component {
     this.setState({
       favorites: [...this.state.favorites,favorite]
     });
-    setTimeout(() => console.log(this.state)); 
+ 
   }
 
   deleteFavorite = (place) => {
